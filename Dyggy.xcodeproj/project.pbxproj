@@ -1,0 +1,592 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9B2DF4EC2B803CB9000F8A18 /* DyggyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2DF4EB2B803CB9000F8A18 /* DyggyApp.swift */; };
+		9B2DF4EE2B803CB9000F8A18 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2DF4ED2B803CB9000F8A18 /* ContentView.swift */; };
+		9B2DF4F02B803CB9000F8A18 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2DF4EF2B803CB9000F8A18 /* Item.swift */; };
+		9B2DF4F22B803CBA000F8A18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B2DF4F12B803CBA000F8A18 /* Assets.xcassets */; };
+		9B2DF4F52B803CBA000F8A18 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B2DF4F42B803CBA000F8A18 /* Preview Assets.xcassets */; };
+		9B2DF5002B803CBA000F8A18 /* DyggyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2DF4FF2B803CBA000F8A18 /* DyggyTests.swift */; };
+		9B2DF50A2B803CBA000F8A18 /* DyggyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2DF5092B803CBA000F8A18 /* DyggyUITests.swift */; };
+		9B2DF50C2B803CBA000F8A18 /* DyggyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2DF50B2B803CBA000F8A18 /* DyggyUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9B2DF4FC2B803CBA000F8A18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9B2DF4E02B803CB9000F8A18 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9B2DF4E72B803CB9000F8A18;
+			remoteInfo = Dyggy;
+		};
+		9B2DF5062B803CBA000F8A18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9B2DF4E02B803CB9000F8A18 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9B2DF4E72B803CB9000F8A18;
+			remoteInfo = Dyggy;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9B2DF4E82B803CB9000F8A18 /* Dyggy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dyggy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B2DF4EB2B803CB9000F8A18 /* DyggyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DyggyApp.swift; sourceTree = "<group>"; };
+		9B2DF4ED2B803CB9000F8A18 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9B2DF4EF2B803CB9000F8A18 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		9B2DF4F12B803CBA000F8A18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9B2DF4F42B803CBA000F8A18 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9B2DF4F62B803CBA000F8A18 /* Dyggy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Dyggy.entitlements; sourceTree = "<group>"; };
+		9B2DF4FB2B803CBA000F8A18 /* DyggyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DyggyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B2DF4FF2B803CBA000F8A18 /* DyggyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DyggyTests.swift; sourceTree = "<group>"; };
+		9B2DF5052B803CBA000F8A18 /* DyggyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DyggyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B2DF5092B803CBA000F8A18 /* DyggyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DyggyUITests.swift; sourceTree = "<group>"; };
+		9B2DF50B2B803CBA000F8A18 /* DyggyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DyggyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9B2DF4E52B803CB9000F8A18 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B2DF4F82B803CBA000F8A18 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B2DF5022B803CBA000F8A18 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9B2DF4DF2B803CB9000F8A18 = {
+			isa = PBXGroup;
+			children = (
+				9B2DF4EA2B803CB9000F8A18 /* Dyggy */,
+				9B2DF4FE2B803CBA000F8A18 /* DyggyTests */,
+				9B2DF5082B803CBA000F8A18 /* DyggyUITests */,
+				9B2DF4E92B803CB9000F8A18 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9B2DF4E92B803CB9000F8A18 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9B2DF4E82B803CB9000F8A18 /* Dyggy.app */,
+				9B2DF4FB2B803CBA000F8A18 /* DyggyTests.xctest */,
+				9B2DF5052B803CBA000F8A18 /* DyggyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9B2DF4EA2B803CB9000F8A18 /* Dyggy */ = {
+			isa = PBXGroup;
+			children = (
+				9B2DF4EB2B803CB9000F8A18 /* DyggyApp.swift */,
+				9B2DF4ED2B803CB9000F8A18 /* ContentView.swift */,
+				9B2DF4EF2B803CB9000F8A18 /* Item.swift */,
+				9B2DF4F12B803CBA000F8A18 /* Assets.xcassets */,
+				9B2DF4F62B803CBA000F8A18 /* Dyggy.entitlements */,
+				9B2DF4F32B803CBA000F8A18 /* Preview Content */,
+			);
+			path = Dyggy;
+			sourceTree = "<group>";
+		};
+		9B2DF4F32B803CBA000F8A18 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				9B2DF4F42B803CBA000F8A18 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9B2DF4FE2B803CBA000F8A18 /* DyggyTests */ = {
+			isa = PBXGroup;
+			children = (
+				9B2DF4FF2B803CBA000F8A18 /* DyggyTests.swift */,
+			);
+			path = DyggyTests;
+			sourceTree = "<group>";
+		};
+		9B2DF5082B803CBA000F8A18 /* DyggyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9B2DF5092B803CBA000F8A18 /* DyggyUITests.swift */,
+				9B2DF50B2B803CBA000F8A18 /* DyggyUITestsLaunchTests.swift */,
+			);
+			path = DyggyUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9B2DF4E72B803CB9000F8A18 /* Dyggy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9B2DF50F2B803CBA000F8A18 /* Build configuration list for PBXNativeTarget "Dyggy" */;
+			buildPhases = (
+				9B2DF4E42B803CB9000F8A18 /* Sources */,
+				9B2DF4E52B803CB9000F8A18 /* Frameworks */,
+				9B2DF4E62B803CB9000F8A18 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Dyggy;
+			productName = Dyggy;
+			productReference = 9B2DF4E82B803CB9000F8A18 /* Dyggy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9B2DF4FA2B803CBA000F8A18 /* DyggyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9B2DF5122B803CBA000F8A18 /* Build configuration list for PBXNativeTarget "DyggyTests" */;
+			buildPhases = (
+				9B2DF4F72B803CBA000F8A18 /* Sources */,
+				9B2DF4F82B803CBA000F8A18 /* Frameworks */,
+				9B2DF4F92B803CBA000F8A18 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9B2DF4FD2B803CBA000F8A18 /* PBXTargetDependency */,
+			);
+			name = DyggyTests;
+			productName = DyggyTests;
+			productReference = 9B2DF4FB2B803CBA000F8A18 /* DyggyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9B2DF5042B803CBA000F8A18 /* DyggyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9B2DF5152B803CBA000F8A18 /* Build configuration list for PBXNativeTarget "DyggyUITests" */;
+			buildPhases = (
+				9B2DF5012B803CBA000F8A18 /* Sources */,
+				9B2DF5022B803CBA000F8A18 /* Frameworks */,
+				9B2DF5032B803CBA000F8A18 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9B2DF5072B803CBA000F8A18 /* PBXTargetDependency */,
+			);
+			name = DyggyUITests;
+			productName = DyggyUITests;
+			productReference = 9B2DF5052B803CBA000F8A18 /* DyggyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9B2DF4E02B803CB9000F8A18 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					9B2DF4E72B803CB9000F8A18 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					9B2DF4FA2B803CBA000F8A18 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 9B2DF4E72B803CB9000F8A18;
+					};
+					9B2DF5042B803CBA000F8A18 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 9B2DF4E72B803CB9000F8A18;
+					};
+				};
+			};
+			buildConfigurationList = 9B2DF4E32B803CB9000F8A18 /* Build configuration list for PBXProject "Dyggy" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9B2DF4DF2B803CB9000F8A18;
+			productRefGroup = 9B2DF4E92B803CB9000F8A18 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9B2DF4E72B803CB9000F8A18 /* Dyggy */,
+				9B2DF4FA2B803CBA000F8A18 /* DyggyTests */,
+				9B2DF5042B803CBA000F8A18 /* DyggyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9B2DF4E62B803CB9000F8A18 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B2DF4F52B803CBA000F8A18 /* Preview Assets.xcassets in Resources */,
+				9B2DF4F22B803CBA000F8A18 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B2DF4F92B803CBA000F8A18 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B2DF5032B803CBA000F8A18 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9B2DF4E42B803CB9000F8A18 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B2DF4EE2B803CB9000F8A18 /* ContentView.swift in Sources */,
+				9B2DF4F02B803CB9000F8A18 /* Item.swift in Sources */,
+				9B2DF4EC2B803CB9000F8A18 /* DyggyApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B2DF4F72B803CBA000F8A18 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B2DF5002B803CBA000F8A18 /* DyggyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B2DF5012B803CBA000F8A18 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B2DF50A2B803CBA000F8A18 /* DyggyUITests.swift in Sources */,
+				9B2DF50C2B803CBA000F8A18 /* DyggyUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9B2DF4FD2B803CBA000F8A18 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9B2DF4E72B803CB9000F8A18 /* Dyggy */;
+			targetProxy = 9B2DF4FC2B803CBA000F8A18 /* PBXContainerItemProxy */;
+		};
+		9B2DF5072B803CBA000F8A18 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9B2DF4E72B803CB9000F8A18 /* Dyggy */;
+			targetProxy = 9B2DF5062B803CBA000F8A18 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		9B2DF50D2B803CBA000F8A18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9B2DF50E2B803CBA000F8A18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		9B2DF5102B803CBA000F8A18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Dyggy/Dyggy.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Dyggy/Preview Content\"";
+				DEVELOPMENT_TEAM = 96GA29E953;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = feaver.Dyggy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		9B2DF5112B803CBA000F8A18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Dyggy/Dyggy.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Dyggy/Preview Content\"";
+				DEVELOPMENT_TEAM = 96GA29E953;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = feaver.Dyggy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		9B2DF5132B803CBA000F8A18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 96GA29E953;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = feaver.DyggyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dyggy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Dyggy";
+			};
+			name = Debug;
+		};
+		9B2DF5142B803CBA000F8A18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 96GA29E953;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = feaver.DyggyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dyggy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Dyggy";
+			};
+			name = Release;
+		};
+		9B2DF5162B803CBA000F8A18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 96GA29E953;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = feaver.DyggyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Dyggy;
+			};
+			name = Debug;
+		};
+		9B2DF5172B803CBA000F8A18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 96GA29E953;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = feaver.DyggyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Dyggy;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9B2DF4E32B803CB9000F8A18 /* Build configuration list for PBXProject "Dyggy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B2DF50D2B803CBA000F8A18 /* Debug */,
+				9B2DF50E2B803CBA000F8A18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9B2DF50F2B803CBA000F8A18 /* Build configuration list for PBXNativeTarget "Dyggy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B2DF5102B803CBA000F8A18 /* Debug */,
+				9B2DF5112B803CBA000F8A18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9B2DF5122B803CBA000F8A18 /* Build configuration list for PBXNativeTarget "DyggyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B2DF5132B803CBA000F8A18 /* Debug */,
+				9B2DF5142B803CBA000F8A18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9B2DF5152B803CBA000F8A18 /* Build configuration list for PBXNativeTarget "DyggyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B2DF5162B803CBA000F8A18 /* Debug */,
+				9B2DF5172B803CBA000F8A18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9B2DF4E02B803CB9000F8A18 /* Project object */;
+}

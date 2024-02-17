@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		9B2DF4EC2B803CB9000F8A18 /* DyggyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2DF4EB2B803CB9000F8A18 /* DyggyApp.swift */; };
-		9B2DF4EE2B803CB9000F8A18 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2DF4ED2B803CB9000F8A18 /* ContentView.swift */; };
-		9B2DF4F02B803CB9000F8A18 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2DF4EF2B803CB9000F8A18 /* Item.swift */; };
 		9B2DF4F22B803CBA000F8A18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B2DF4F12B803CBA000F8A18 /* Assets.xcassets */; };
 		9B2DF4F52B803CBA000F8A18 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B2DF4F42B803CBA000F8A18 /* Preview Assets.xcassets */; };
 		9B2DF5002B803CBA000F8A18 /* DyggyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2DF4FF2B803CBA000F8A18 /* DyggyTests.swift */; };
 		9B2DF50A2B803CBA000F8A18 /* DyggyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2DF5092B803CBA000F8A18 /* DyggyUITests.swift */; };
 		9B2DF50C2B803CBA000F8A18 /* DyggyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2DF50B2B803CBA000F8A18 /* DyggyUITestsLaunchTests.swift */; };
+		9B9EEA1C2B80B17C00C30A9A /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 9B9EEA1B2B80B17C00C30A9A /* SFSafeSymbols */; };
+		9B9EEA1E2B80B8BE00C30A9A /* Logger+Subsystems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9EEA1D2B80B8BE00C30A9A /* Logger+Subsystems.swift */; };
+		9B9EEA202B80B9C000C30A9A /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9EEA1F2B80B9C000C30A9A /* MenuViewModel.swift */; };
+		9B9EEA222B80B9F800C30A9A /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9EEA212B80B9F800C30A9A /* MenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +39,6 @@
 /* Begin PBXFileReference section */
 		9B2DF4E82B803CB9000F8A18 /* Dyggy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dyggy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B2DF4EB2B803CB9000F8A18 /* DyggyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DyggyApp.swift; sourceTree = "<group>"; };
-		9B2DF4ED2B803CB9000F8A18 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		9B2DF4EF2B803CB9000F8A18 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		9B2DF4F12B803CBA000F8A18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B2DF4F42B803CBA000F8A18 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9B2DF4F62B803CBA000F8A18 /* Dyggy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Dyggy.entitlements; sourceTree = "<group>"; };
@@ -47,6 +47,9 @@
 		9B2DF5052B803CBA000F8A18 /* DyggyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DyggyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B2DF5092B803CBA000F8A18 /* DyggyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DyggyUITests.swift; sourceTree = "<group>"; };
 		9B2DF50B2B803CBA000F8A18 /* DyggyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DyggyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9B9EEA1D2B80B8BE00C30A9A /* Logger+Subsystems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+Subsystems.swift"; sourceTree = "<group>"; };
+		9B9EEA1F2B80B9C000C30A9A /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
+		9B9EEA212B80B9F800C30A9A /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B9EEA1C2B80B17C00C30A9A /* SFSafeSymbols in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,8 +102,9 @@
 			isa = PBXGroup;
 			children = (
 				9B2DF4EB2B803CB9000F8A18 /* DyggyApp.swift */,
-				9B2DF4ED2B803CB9000F8A18 /* ContentView.swift */,
-				9B2DF4EF2B803CB9000F8A18 /* Item.swift */,
+				9B9EEA212B80B9F800C30A9A /* MenuView.swift */,
+				9B9EEA1F2B80B9C000C30A9A /* MenuViewModel.swift */,
+				9B9EEA1D2B80B8BE00C30A9A /* Logger+Subsystems.swift */,
 				9B2DF4F12B803CBA000F8A18 /* Assets.xcassets */,
 				9B2DF4F62B803CBA000F8A18 /* Dyggy.entitlements */,
 				9B2DF4F32B803CBA000F8A18 /* Preview Content */,
@@ -148,6 +153,9 @@
 			dependencies = (
 			);
 			name = Dyggy;
+			packageProductDependencies = (
+				9B9EEA1B2B80B17C00C30A9A /* SFSafeSymbols */,
+			);
 			productName = Dyggy;
 			productReference = 9B2DF4E82B803CB9000F8A18 /* Dyggy.app */;
 			productType = "com.apple.product-type.application";
@@ -220,6 +228,9 @@
 				Base,
 			);
 			mainGroup = 9B2DF4DF2B803CB9000F8A18;
+			packageReferences = (
+				9B9EEA1A2B80B17C00C30A9A /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
+			);
 			productRefGroup = 9B2DF4E92B803CB9000F8A18 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -262,9 +273,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B2DF4EE2B803CB9000F8A18 /* ContentView.swift in Sources */,
-				9B2DF4F02B803CB9000F8A18 /* Item.swift in Sources */,
+				9B9EEA222B80B9F800C30A9A /* MenuView.swift in Sources */,
+				9B9EEA202B80B9C000C30A9A /* MenuViewModel.swift in Sources */,
 				9B2DF4EC2B803CB9000F8A18 /* DyggyApp.swift in Sources */,
+				9B9EEA1E2B80B8BE00C30A9A /* Logger+Subsystems.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +445,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -461,6 +474,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -587,6 +601,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9B9EEA1A2B80B17C00C30A9A /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SFSafeSymbols/SFSafeSymbols";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9B9EEA1B2B80B17C00C30A9A /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9B9EEA1A2B80B17C00C30A9A /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9B2DF4E02B803CB9000F8A18 /* Project object */;
 }

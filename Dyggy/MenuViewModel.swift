@@ -5,6 +5,7 @@
 //  Created by Mark Feaver on 17/2/2024.
 //
 
+import AppKit
 import Combine
 import Observation
 import OSLog
@@ -44,7 +45,7 @@ extension MenuViewModel {
     }
     
     func quit() {
-        Logger.viewCycle.debug("Quit selected")
+        NSApplication.shared.terminate(self)
     }
     
 }

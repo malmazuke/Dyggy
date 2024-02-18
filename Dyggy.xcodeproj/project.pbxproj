@@ -17,6 +17,10 @@
 		9B9EEA1E2B80B8BE00C30A9A /* Logger+Subsystems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9EEA1D2B80B8BE00C30A9A /* Logger+Subsystems.swift */; };
 		9B9EEA202B80B9C000C30A9A /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9EEA1F2B80B9C000C30A9A /* MenuViewModel.swift */; };
 		9B9EEA222B80B9F800C30A9A /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9EEA212B80B9F800C30A9A /* MenuView.swift */; };
+		9BE0387F2B80C57700507C64 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 9BE0387E2B80C57700507C64 /* Factory */; };
+		9BE038812B80C61500507C64 /* DependencyInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE038802B80C61500507C64 /* DependencyInjection.swift */; };
+		9BE038832B80C66D00507C64 /* KeyboardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE038822B80C66D00507C64 /* KeyboardService.swift */; };
+		9BE0388A2B80C74B00507C64 /* KeyboardConnectionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE038892B80C74B00507C64 /* KeyboardConnectionStatus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +54,9 @@
 		9B9EEA1D2B80B8BE00C30A9A /* Logger+Subsystems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+Subsystems.swift"; sourceTree = "<group>"; };
 		9B9EEA1F2B80B9C000C30A9A /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		9B9EEA212B80B9F800C30A9A /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		9BE038802B80C61500507C64 /* DependencyInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjection.swift; sourceTree = "<group>"; };
+		9BE038822B80C66D00507C64 /* KeyboardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardService.swift; sourceTree = "<group>"; };
+		9BE038892B80C74B00507C64 /* KeyboardConnectionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardConnectionStatus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +65,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B9EEA1C2B80B17C00C30A9A /* SFSafeSymbols in Frameworks */,
+				9BE0387F2B80C57700507C64 /* Factory in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,9 +110,11 @@
 			isa = PBXGroup;
 			children = (
 				9B2DF4EB2B803CB9000F8A18 /* DyggyApp.swift */,
-				9B9EEA212B80B9F800C30A9A /* MenuView.swift */,
-				9B9EEA1F2B80B9C000C30A9A /* MenuViewModel.swift */,
-				9B9EEA1D2B80B8BE00C30A9A /* Logger+Subsystems.swift */,
+				9BE038872B80C6AC00507C64 /* Infrastructure */,
+				9BE038882B80C73500507C64 /* Model */,
+				9BE038862B80C68100507C64 /* Services */,
+				9BE038852B80C67C00507C64 /* ViewModels */,
+				9BE038842B80C67600507C64 /* Views */,
 				9B2DF4F12B803CBA000F8A18 /* Assets.xcassets */,
 				9B2DF4F62B803CBA000F8A18 /* Dyggy.entitlements */,
 				9B2DF4F32B803CBA000F8A18 /* Preview Content */,
@@ -137,6 +147,47 @@
 			path = DyggyUITests;
 			sourceTree = "<group>";
 		};
+		9BE038842B80C67600507C64 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9B9EEA212B80B9F800C30A9A /* MenuView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9BE038852B80C67C00507C64 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				9B9EEA1F2B80B9C000C30A9A /* MenuViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		9BE038862B80C68100507C64 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9BE038822B80C66D00507C64 /* KeyboardService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		9BE038872B80C6AC00507C64 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				9B9EEA1D2B80B8BE00C30A9A /* Logger+Subsystems.swift */,
+				9BE038802B80C61500507C64 /* DependencyInjection.swift */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		9BE038882B80C73500507C64 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9BE038892B80C74B00507C64 /* KeyboardConnectionStatus.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -155,6 +206,7 @@
 			name = Dyggy;
 			packageProductDependencies = (
 				9B9EEA1B2B80B17C00C30A9A /* SFSafeSymbols */,
+				9BE0387E2B80C57700507C64 /* Factory */,
 			);
 			productName = Dyggy;
 			productReference = 9B2DF4E82B803CB9000F8A18 /* Dyggy.app */;
@@ -230,6 +282,7 @@
 			mainGroup = 9B2DF4DF2B803CB9000F8A18;
 			packageReferences = (
 				9B9EEA1A2B80B17C00C30A9A /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
+				9BE0387D2B80C57700507C64 /* XCRemoteSwiftPackageReference "Factory" */,
 			);
 			productRefGroup = 9B2DF4E92B803CB9000F8A18 /* Products */;
 			projectDirPath = "";
@@ -273,8 +326,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BE038832B80C66D00507C64 /* KeyboardService.swift in Sources */,
 				9B9EEA222B80B9F800C30A9A /* MenuView.swift in Sources */,
 				9B9EEA202B80B9C000C30A9A /* MenuViewModel.swift in Sources */,
+				9BE0388A2B80C74B00507C64 /* KeyboardConnectionStatus.swift in Sources */,
+				9BE038812B80C61500507C64 /* DependencyInjection.swift in Sources */,
 				9B2DF4EC2B803CB9000F8A18 /* DyggyApp.swift in Sources */,
 				9B9EEA1E2B80B8BE00C30A9A /* Logger+Subsystems.swift in Sources */,
 			);
@@ -611,6 +667,14 @@
 				minimumVersion = 5.2.0;
 			};
 		};
+		9BE0387D2B80C57700507C64 /* XCRemoteSwiftPackageReference "Factory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Factory";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -618,6 +682,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9B9EEA1A2B80B17C00C30A9A /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
 			productName = SFSafeSymbols;
+		};
+		9BE0387E2B80C57700507C64 /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9BE0387D2B80C57700507C64 /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

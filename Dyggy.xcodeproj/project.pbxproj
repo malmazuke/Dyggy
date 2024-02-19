@@ -198,6 +198,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9B2DF50F2B803CBA000F8A18 /* Build configuration list for PBXNativeTarget "Dyggy" */;
 			buildPhases = (
+				9B71C7B62B83161800A32991 /* ShellScript */,
 				9B2DF4E42B803CB9000F8A18 /* Sources */,
 				9B2DF4E52B803CB9000F8A18 /* Frameworks */,
 				9B2DF4E62B803CB9000F8A18 /* Resources */,
@@ -324,6 +325,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9B71C7B62B83161800A32991 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint --fix && swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9B2DF4E42B803CB9000F8A18 /* Sources */ = {
@@ -507,6 +529,7 @@
 				DEVELOPMENT_TEAM = 96GA29E953;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -537,6 +560,7 @@
 				DEVELOPMENT_TEAM = 96GA29E953;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";

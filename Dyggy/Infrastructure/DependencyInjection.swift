@@ -8,9 +8,9 @@
 import Factory
 
 extension Container {
-    
+
     var keyboardService: Factory<KeyboardService> {
         Factory(self) { DefaultKeyboardService() }
     }
-    
+
 }

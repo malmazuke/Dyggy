@@ -22,7 +22,7 @@ enum KeyboardConnectionError: Error {
 }
 
 extension KeyboardConnectionError: LocalizedError {
-    
+
     var errorDescription: String? {
         switch self {
         case .timeout:

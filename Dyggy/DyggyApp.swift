@@ -16,7 +16,7 @@ struct DyggyApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
-    
+
     var body: some Scene {
         MenuBarExtra("Dyggy", systemImage: SFSymbol.suitSpadeFill.rawValue) {
             MenuView()

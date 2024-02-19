@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct MenuView: View {
-    
+
     private var viewModel = MenuViewModel()
-    
+
     var body: some View {
         switch viewModel.state {
         case .disconnected:
@@ -28,13 +28,13 @@ struct MenuView: View {
                 Text("Error: \(errorMessage)")
             }
         }
-        
+
         Button(action: viewModel.selectPrimaryConfig) {
             Text("Select main config")
         }
 
         Divider()
-        
+
         Button(action: viewModel.settingsSelected) {
             Text("Settings")
         }

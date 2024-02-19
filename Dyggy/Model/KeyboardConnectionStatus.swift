@@ -26,9 +26,9 @@ extension KeyboardConnectionError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .timeout:
-            "Timeout"
+            String(localized: "Timeout")
         case .unknown:
-            "Unknown"
+            String(localized: "Unknown")
         }
     }
 

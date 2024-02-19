@@ -1,0 +1,39 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Connected" : {
+
+    },
+    "Connecting..." : {
+
+    },
+    "Disconnected" : {
+
+    },
+    "Disconnecting" : {
+
+    },
+    "Dyggy" : {
+
+    },
+    "Error: %@" : {
+
+    },
+    "Quit" : {
+
+    },
+    "Select main config" : {
+
+    },
+    "Settings" : {
+
+    },
+    "Timeout" : {
+
+    },
+    "Unknown" : {
+
+    }
+  },
+  "version" : "1.0"
+}

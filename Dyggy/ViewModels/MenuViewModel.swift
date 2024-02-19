@@ -72,7 +72,7 @@ extension MenuViewModel {
             } catch let error as KeyboardConnectionError {
                 Logger.viewCycle.error("\(error)")
                 
-                state = .error(description: error.errorDescription ?? "Unknown")
+                state = .error(description: error.errorDescription ?? String(localized: "Unknown"))
             }
         }
     }

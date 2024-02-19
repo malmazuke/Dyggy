@@ -18,18 +18,23 @@ class MenuViewModel {
     // MARK: - Types
     enum State {
         case disconnected
+        case disconnecting
         case connecting
         case connected
-        case error(Error)
+        case error(description: String)
         
         static func state(with keyboardConnectionStatus: KeyboardConnectionStatus) -> State {
             switch keyboardConnectionStatus {
             case .disconnected:
                 .disconnected
+            case .disconnecting:
+                .disconnecting
             case .connecting:
                 .connecting
             case .connected:
                 .connected
+            case .error(let error):
+                .error(description: error.localizedDescription)
             }
         }
     }
@@ -64,10 +69,10 @@ extension MenuViewModel {
                 Logger.viewCycle.debug("Connection status: \(String(describing: connectionStatus))")
                 
                 state = .state(with: connectionStatus)
-            } catch {
-                Logger.viewCycle.error("\(error.localizedDescription)")
+            } catch let error as KeyboardConnectionError {
+                Logger.viewCycle.error("\(error)")
                 
-                state = .error(error)
+                state = .error(description: error.errorDescription ?? "Unknown")
             }
         }
     }

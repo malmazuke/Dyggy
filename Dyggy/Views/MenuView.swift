@@ -17,13 +17,15 @@ struct MenuView: View {
             Button(action: viewModel.connect) {
                 Text("Disconnected")
             }
+        case .disconnecting:
+            Text("Disconnecting")
         case .connecting:
             Text("Connecting...")
         case .connected:
             Text("Connected")
-        case .error:
+        case .error(let errorMessage):
             Button(action: viewModel.connect) {
-                Text("Error connecting - click to try again")
+                Text("Error: \(errorMessage)")
             }
         }
         

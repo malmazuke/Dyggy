@@ -24,9 +24,15 @@ class DefaultKeyboardService: KeyboardService {
         
         try await Task.sleep(nanoseconds: 2 * 1_000_000_000)
         
-        Logger.viewCycle.debug("KeyboardService: Connected")
+        let isConnected = Bool.random()
         
-        return .connected
+        if isConnected {
+            Logger.viewCycle.debug("KeyboardService: Connected")
+            
+            return .connected
+        } else {
+            throw Bool.random() ? KeyboardConnectionError.timeout : KeyboardConnectionError.unknown
+        }
     }
     
     func disconnect() async throws -> KeyboardConnectionStatus {

@@ -34,9 +34,9 @@ struct MenuView: View {
             }
         }
 
-        if viewModel.availableKeyboards.count > 0 {
-            Divider()
+        Divider()
 
+        if viewModel.availableKeyboards.count > 0 {
             Menu("Available Keyboards") {
                 ForEach(viewModel.availableKeyboards, id: \.deviceType) { device in
                     if let selected = viewModel.selectedKeyboard, selected == device {

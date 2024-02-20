@@ -4,6 +4,7 @@ import SwiftData
 import SFSafeSymbols
 
 @main
+@MainActor
 struct DyggyApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
@@ -17,9 +18,12 @@ struct DyggyApp: App {
         }
     }()
 
+    @State private var menuViewModel = MenuViewModel()
+
     var body: some Scene {
         MenuBarExtra("Dyggy", systemImage: SFSymbol.suitSpadeFill.rawValue) {
             MenuView()
+                .environment(menuViewModel)
         }
         .modelContainer(sharedModelContainer)
     }

@@ -18,7 +18,7 @@ import Factory
 class MenuViewModel {
 
     // MARK: - Types
-    enum ConnectionState {
+    enum ConnectionState: Equatable {
         case noKeyboardConnected
         case noKeyboardSelected
         case disconnected
@@ -46,8 +46,21 @@ class MenuViewModel {
     // MARK: - Public Properties
 
     var connectionState: ConnectionState
-    var selectedKeyboard: ConnectedDygmaDevice?
     var availableKeyboards: [ConnectedDygmaDevice] = []
+    var selectedKeyboard: ConnectedDygmaDevice? {
+        didSet {
+            guard selectedKeyboard != nil else {
+                return
+            }
+
+            guard oldValue != selectedKeyboard || connectionState != .connected else {
+                Logger.viewCycle.debug("Attempted to connect to an already connected keyboard")
+                return
+            }
+
+            connectToSelectedKeyboard()
+        }
+    }
 
     // MARK: - Private Properties
 
@@ -73,7 +86,6 @@ class MenuViewModel {
         case 1:
             let keyboard = keyboards.first!
             selectedKeyboard = keyboard
-            connectToSelectedKeyboard()
         default:
             connectionState = .noKeyboardSelected
             selectedKeyboard = nil
@@ -94,17 +106,6 @@ class MenuViewModel {
 // MARK: - Actions
 
 extension MenuViewModel {
-
-    func connectToKeyboard(_ keyboard: ConnectedDygmaDevice) {
-        guard selectedKeyboard != keyboard else {
-            Logger.viewCycle.debug("Attempted to connect to an already connected keyboard")
-            return
-        }
-
-        selectedKeyboard = keyboard
-
-        connectToSelectedKeyboard()
-    }
 
     func connectToSelectedKeyboard() {
         guard let selectedKeyboard else {

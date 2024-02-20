@@ -7,6 +7,7 @@
 
 import AppKit
 import Combine
+import DygmaFocusAPI
 import Observation
 import OSLog
 
@@ -16,14 +17,16 @@ import Factory
 class MenuViewModel {
 
     // MARK: - Types
-    enum State {
+    enum ConnectionState {
+        case noKeyboardConnected
+        case noKeyboardSelected
         case disconnected
         case disconnecting
         case connecting
         case connected
         case error(description: String)
 
-        static func state(with keyboardConnectionStatus: KeyboardConnectionStatus) -> State {
+        static func state(with keyboardConnectionStatus: KeyboardConnectionStatus) -> ConnectionState {
             switch keyboardConnectionStatus {
             case .disconnected:
                 .disconnected
@@ -39,9 +42,15 @@ class MenuViewModel {
         }
     }
 
+    enum KeyboardSelectionState {
+        case noneFound
+        case keyboardsAvailable(selected: ConnectedDygmaDevice?, available: [ConnectedDygmaDevice])
+    }
+
     // MARK: - Public Properties
 
-    var state: State
+    var connectionState: ConnectionState
+    var keyboardSelectionState: KeyboardSelectionState
 
     // MARK: - Private Properties
 
@@ -51,7 +60,22 @@ class MenuViewModel {
     // MARK: - Initialisers
 
     init() {
-        self.state = .disconnected
+        self.connectionState = .disconnected
+        self.keyboardSelectionState = .noneFound
+
+        self.searchForConnectedKeyboards()
+    }
+
+    private func searchForConnectedKeyboards() {
+        let keyboards = keyboardService.discoverKeyboards()
+
+        guard keyboards.count > 0 else {
+            connectionState = .noKeyboardConnected
+            keyboardSelectionState = .noneFound
+            return
+        }
+
+        keyboardSelectionState = .keyboardsAvailable(selected: nil, available: keyboards)
     }
 
 }
@@ -61,18 +85,21 @@ class MenuViewModel {
 extension MenuViewModel {
 
     func connect() {
-        state = .connecting
+        connectionState = .connecting
 
         Task {
             do {
-                let connectionStatus = try await keyboardService.connect()
+                // TODO: Actually connect to the selected keyboard
+                let keyboard = ConnectedDygmaDevice(deviceType: .defyWired)
+
+                let connectionStatus = try await keyboardService.connect(to: keyboard)
                 Logger.viewCycle.debug("Connection status: \(String(describing: connectionStatus))")
 
-                state = .state(with: connectionStatus)
+                connectionState = .state(with: connectionStatus)
             } catch let error as KeyboardConnectionError {
                 Logger.viewCycle.error("\(error)")
 
-                state = .error(description: error.errorDescription ?? String(localized: "Unknown"))
+                connectionState = .error(description: error.errorDescription ?? String(localized: "Unknown"))
             }
         }
     }

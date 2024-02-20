@@ -7,8 +7,8 @@ final class DefaultFocusAPITests: XCTestCase {
     var testSubject: DefaultFocusAPI!
     var mockUSBService: MockUSBService!
 
-    override func setUp() async throws {
-        try await super.setUp()
+    override func setUp() {
+        super.setUp()
 
         mockUSBService = MockUSBService()
 
@@ -19,7 +19,7 @@ final class DefaultFocusAPITests: XCTestCase {
         testSubject = DefaultFocusAPI()
     }
 
-    func testFindAllDevices() async throws {
+    func testFindAllDevices() {
         // GIVEN all devices are connected
         mockUSBService.discoverConnectedDevicesHandler = {
             DygmaDevice.allDevices.map { .init(vendorId: $0.vendorId, productId: $0.productId) }
@@ -27,11 +27,11 @@ final class DefaultFocusAPITests: XCTestCase {
 
         // AND I expect to find four connected devices
         let expectedDevices: Set<ConnectedDygmaDevice> = Set(
-            DygmaDevice.allDevices.map { ConnectedDygmaDevice(vendorId: $0.vendorId, productId: $0.productId) }
+            DygmaDevice.allDevices.compactMap { ConnectedDygmaDevice(vendorId: $0.vendorId, productId: $0.productId) }
         )
 
         // WHEN Focus API attempts to find devices
-        let foundDevices = await testSubject.find(devices: DygmaDevice.allDevices)
+        let foundDevices = testSubject.find(devices: DygmaDevice.allDevices)
 
         // THEN Devices are found
         XCTAssertEqual(expectedDevices, foundDevices)

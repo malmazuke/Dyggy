@@ -12,20 +12,33 @@ struct MenuView: View {
     private var viewModel = MenuViewModel()
 
     var body: some View {
-        switch viewModel.state {
+        switch viewModel.connectionState {
+        case .noKeyboardConnected:
+            Text("Status: No Keyboard Detected")
+        case .noKeyboardSelected:
+            Text("Select a keyboard below")
         case .disconnected:
             Button(action: viewModel.connect) {
-                Text("Disconnected")
+                Text("Status: Disconnected")
             }
         case .disconnecting:
-            Text("Disconnecting")
+            Text("Status: Disconnecting")
         case .connecting:
-            Text("Connecting...")
+            Text("Status: Connecting...")
         case .connected:
-            Text("Connected")
+            Text("Status: Connected")
         case .error(let errorMessage):
             Button(action: viewModel.connect) {
                 Text("Error: \(errorMessage)")
+            }
+        }
+
+        switch viewModel.keyboardSelectionState {
+        case .noneFound:
+            Text("No Keyboards Detected")
+        case .keyboardsAvailable(let selected, let available):
+            List(available, id: \.self) { keyboard in
+                Text(keyboard.deviceName)
             }
         }
 

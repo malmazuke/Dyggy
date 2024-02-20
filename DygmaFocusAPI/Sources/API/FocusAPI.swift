@@ -3,7 +3,7 @@ import Observation
 
 public protocol FocusAPI {
 
-    func find(devices: Set<DygmaDevice>) async throws -> Set<ConnectedDygmaDevice>
+    func find(devices: Set<DygmaDevice>) -> Set<ConnectedDygmaDevice>
 
 }
 
@@ -21,7 +21,7 @@ public class DefaultFocusAPI: FocusAPI {
 
     // MARK: - Public methods
 
-    public func find(devices: Set<DygmaDevice>) async -> Set<ConnectedDygmaDevice> {
+    public func find(devices: Set<DygmaDevice>) -> Set<ConnectedDygmaDevice> {
         let allDevices = usbService.discoverConnectedDevices()
 
         let foundDevices = allDevices.filter { deviceInfo in

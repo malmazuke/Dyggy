@@ -1,31 +1,40 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Connected" : {
-
-    },
-    "Connecting..." : {
-
-    },
-    "Disconnected" : {
-
-    },
-    "Disconnecting" : {
-
-    },
     "Dyggy" : {
 
     },
     "Error: %@" : {
 
     },
+    "No Keyboards Detected" : {
+
+    },
     "Quit" : {
+
+    },
+    "Select a keyboard below" : {
 
     },
     "Select main config" : {
 
     },
     "Settings" : {
+
+    },
+    "Status: Connected" : {
+
+    },
+    "Status: Connecting..." : {
+
+    },
+    "Status: Disconnected" : {
+
+    },
+    "Status: Disconnecting" : {
+
+    },
+    "Status: No Keyboard Detected" : {
 
     },
     "Timeout" : {

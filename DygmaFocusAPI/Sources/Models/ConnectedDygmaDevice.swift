@@ -14,9 +14,13 @@ public struct ConnectedDygmaDevice: Hashable {
         deviceType.displayName
     }
 
+    public init(deviceType: DygmaDevice) {
+        self.deviceType = deviceType
+    }
+
 }
 
-extension ConnectedDygmaDevice {
+public extension ConnectedDygmaDevice {
 
     init?(vendorId: Int, productId: Int) {
         guard let deviceType = DygmaDevice.device(vendorId: vendorId, productId: productId) else {

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import IOKit
 import IOKit.usb
 
 protocol USBService {

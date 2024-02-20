@@ -58,7 +58,6 @@ class MenuViewModel {
 
     init() {
         self.connectionState = .noKeyboardSelected
-
         self.searchForConnectedKeyboards()
     }
 
@@ -97,6 +96,11 @@ class MenuViewModel {
 extension MenuViewModel {
 
     func connectToKeyboard(_ keyboard: ConnectedDygmaDevice) {
+        guard selectedKeyboard != keyboard else {
+            Logger.viewCycle.debug("Attempted to connect to an already connected keyboard")
+            return
+        }
+
         selectedKeyboard = keyboard
 
         connectToSelectedKeyboard()

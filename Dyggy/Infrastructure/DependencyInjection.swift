@@ -11,11 +11,11 @@ import Factory
 extension Container {
 
     var keyboardService: Factory<KeyboardService> {
-        Factory(self) { DefaultKeyboardService() }
+        self { DefaultKeyboardService() }
     }
 
     var focusAPI: Factory<FocusAPI> {
-        Factory(self) { DefaultFocusAPI() }
+        self { DefaultFocusAPI() }
     }
 
 }

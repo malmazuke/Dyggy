@@ -12,7 +12,7 @@ import SwiftUI
 @MainActor
 struct MenuView: View {
 
-    @Bindable private var viewModel = MenuViewModel()
+    @State private var viewModel = MenuViewModel()
 
     var body: some View {
         switch viewModel.connectionState {

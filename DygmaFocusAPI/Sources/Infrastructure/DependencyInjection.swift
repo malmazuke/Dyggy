@@ -10,7 +10,7 @@ import Factory
 extension Container {
 
     var usbService: Factory<USBService> {
-        Factory(self) { DefaultUSBService() }
+        self { DefaultUSBService() }
     }
 
 }

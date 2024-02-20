@@ -10,6 +10,26 @@ public enum DygmaDevice {
     case defyWireless
     case raiseANSI
     case raiseISO
+}
+
+extension DygmaDevice: Comparable {
+
+    private var sortOrder: Int {
+        switch self {
+        case .defyWired:
+            return 0
+        case .defyWireless:
+            return 1
+        case .raiseANSI:
+            return 2
+        case .raiseISO:
+            return 3
+        }
+    }
+
+    public static func < (lhs: DygmaDevice, rhs: DygmaDevice) -> Bool {
+        lhs.sortOrder < rhs.sortOrder
+    }
 
 }
 

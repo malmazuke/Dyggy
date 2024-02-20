@@ -20,6 +20,14 @@ public struct ConnectedDygmaDevice: Hashable {
 
 }
 
+extension ConnectedDygmaDevice: Comparable {
+
+    public static func < (lhs: ConnectedDygmaDevice, rhs: ConnectedDygmaDevice) -> Bool {
+        lhs.deviceType < rhs.deviceType
+    }
+
+}
+
 public extension ConnectedDygmaDevice {
 
     init?(vendorId: Int, productId: Int) {

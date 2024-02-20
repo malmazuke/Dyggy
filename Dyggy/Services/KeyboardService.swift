@@ -25,8 +25,7 @@ class DefaultKeyboardService: KeyboardService {
     @Injected(\.focusAPI) private var focusAPI
 
     func discoverKeyboards() -> [ConnectedDygmaDevice] {
-        // TODO: Sort these properly
-        Array(focusAPI.find(devices: DygmaDevice.allDevices))
+        Array(focusAPI.find(devices: DygmaDevice.allDevices)).sorted()
     }
 
     func connect(to keyboard: ConnectedDygmaDevice) async throws -> KeyboardConnectionStatus {

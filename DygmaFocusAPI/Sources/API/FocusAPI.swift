@@ -1,9 +1,12 @@
+import Factory
+import Observation
+
 public enum DygmaDevice {
     case defyWired
     case defyWireless
     case raiseANSI
     case raiseISO
-    
+
     var vendorId: Int {
         switch self {
         case .defyWired:
@@ -16,7 +19,7 @@ public enum DygmaDevice {
             0x1209
         }
     }
-    
+
     var productId: Int {
         switch self {
         case .defyWired:
@@ -29,8 +32,8 @@ public enum DygmaDevice {
             0x2201
         }
     }
-    
-    static var allDevices: Set<DygmaDevice> {
+
+    public static var allDevices: Set<DygmaDevice> {
         [.defyWired, .defyWireless, .raiseANSI, .raiseISO]
     }
 
@@ -52,8 +55,30 @@ public protocol FocusAPI {
 
 public class DefaultFocusAPI: FocusAPI {
 
+    // MARK: - Private Properties
+    @ObservationIgnored
+    @Injected(\.usbService) private var usbService
+
+    // MARK: - Initialisers
+
+    public init() {
+        // Intentionally left blank
+    }
+
+    // MARK: - Public methods
+
     public func find(devices: Set<DygmaDevice>) async throws -> Set<ConnectedDygmaDevice> {
-        return Set<ConnectedDygmaDevice>()
+        let allDevices = usbService.discoverConnectedDevices()
+
+        let foundDevices = allDevices.filter { deviceInfo in
+            devices.contains { device in
+                device.vendorId == deviceInfo.vendorId && device.productId == deviceInfo.productId
+            }
+        }
+
+        return Set(foundDevices.compactMap { (vendorId: Int, productId: Int) in
+            ConnectedDygmaDevice(vendorId: vendorId, productId: productId)
+        })
     }
 
 }

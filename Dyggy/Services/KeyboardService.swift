@@ -5,6 +5,8 @@
 //  Created by Mark Feaver on 17/2/2024.
 //
 
+import DygmaFocusAPI
+import Factory
 import OSLog
 
 protocol KeyboardService {
@@ -17,10 +19,16 @@ protocol KeyboardService {
 
 class DefaultKeyboardService: KeyboardService {
 
+    @ObservationIgnored
+    @Injected(\.focusAPI) private var focusAPI
+
     func connect() async throws -> KeyboardConnectionStatus {
         // TODO: Add implementation
 
         Logger.viewCycle.debug("KeyboardService: Connecting...")
+
+        let connectedDevices = try await focusAPI.find(devices: DygmaDevice.allDevices)
+        Logger.viewCycle.debug("Connected devices: \(connectedDevices)")
 
         try await Task.sleep(nanoseconds: 2 * 1_000_000_000)
 

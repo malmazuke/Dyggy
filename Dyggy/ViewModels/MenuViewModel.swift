@@ -42,15 +42,11 @@ class MenuViewModel {
         }
     }
 
-    enum KeyboardSelectionState {
-        case noneFound
-        case keyboardsAvailable(selected: ConnectedDygmaDevice?, available: [ConnectedDygmaDevice])
-    }
-
     // MARK: - Public Properties
 
     var connectionState: ConnectionState
-    var keyboardSelectionState: KeyboardSelectionState
+    var selectedKeyboard: ConnectedDygmaDevice?
+    var availableKeyboards: [ConnectedDygmaDevice]?
 
     // MARK: - Private Properties
 
@@ -60,8 +56,7 @@ class MenuViewModel {
     // MARK: - Initialisers
 
     init() {
-        self.connectionState = .disconnected
-        self.keyboardSelectionState = .noneFound
+        self.connectionState = .noKeyboardSelected
 
         self.searchForConnectedKeyboards()
     }
@@ -69,13 +64,21 @@ class MenuViewModel {
     private func searchForConnectedKeyboards() {
         let keyboards = keyboardService.discoverKeyboards()
 
-        guard keyboards.count > 0 else {
+        availableKeyboards = keyboards
+
+        switch keyboards.count {
+        case Int.min...0:
             connectionState = .noKeyboardConnected
-            keyboardSelectionState = .noneFound
-            return
+            selectedKeyboard = nil
+        case 1:
+            let keyboard = keyboards.first!
+            selectedKeyboard = keyboard
+            connectToSelectedKeyboard()
+        default:
+            connectionState = .noKeyboardSelected
+            selectedKeyboard = nil
         }
 
-        keyboardSelectionState = .keyboardsAvailable(selected: nil, available: keyboards)
     }
 
 }
@@ -84,15 +87,21 @@ class MenuViewModel {
 
 extension MenuViewModel {
 
-    func connect() {
+    func connectToKeyboard(_ keyboard: ConnectedDygmaDevice) {
+        selectedKeyboard = keyboard
+
+        connectToSelectedKeyboard()
+    }
+
+    func connectToSelectedKeyboard() {
+        guard let selectedKeyboard else {
+            fatalError("Should always have a selected keyboard if connect called")
+        }
         connectionState = .connecting
 
         Task {
             do {
-                // TODO: Actually connect to the selected keyboard
-                let keyboard = ConnectedDygmaDevice(deviceType: .defyWired)
-
-                let connectionStatus = try await keyboardService.connect(to: keyboard)
+                let connectionStatus = try await keyboardService.connect(to: selectedKeyboard)
                 Logger.viewCycle.debug("Connection status: \(String(describing: connectionStatus))")
 
                 connectionState = .state(with: connectionStatus)

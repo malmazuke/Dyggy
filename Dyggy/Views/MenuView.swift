@@ -5,6 +5,7 @@
 //  Created by Mark Feaver on 17/2/2024.
 //
 
+import SFSafeSymbols
 import SwiftUI
 
 struct MenuView: View {
@@ -14,11 +15,11 @@ struct MenuView: View {
     var body: some View {
         switch viewModel.connectionState {
         case .noKeyboardConnected:
-            Text("Status: No Keyboard Detected")
+            EmptyView()
         case .noKeyboardSelected:
-            Text("Select a keyboard below")
+            Text("Select keyboard")
         case .disconnected:
-            Button(action: viewModel.connect) {
+            Button(action: viewModel.connectToSelectedKeyboard) {
                 Text("Status: Disconnected")
             }
         case .disconnecting:
@@ -28,17 +29,27 @@ struct MenuView: View {
         case .connected:
             Text("Status: Connected")
         case .error(let errorMessage):
-            Button(action: viewModel.connect) {
+            Button(action: viewModel.connectToSelectedKeyboard) {
                 Text("Error: \(errorMessage)")
             }
         }
 
-        switch viewModel.keyboardSelectionState {
-        case .noneFound:
-            Text("No Keyboards Detected")
-        case .keyboardsAvailable(let selected, let available):
-            List(available, id: \.self) { keyboard in
-                Text(keyboard.deviceName)
+        if let available = viewModel.availableKeyboards {
+            Divider()
+
+            Menu("Available Keyboards") {
+                ForEach(available, id: \.deviceType) { device in
+                    if let selected = viewModel.selectedKeyboard, selected == device {
+                        Button("\(device.deviceName) ✓") {
+                            // Deliberately left blank
+                        }
+                    } else {
+                        Button(device.deviceName) {
+                            viewModel.connectToKeyboard(device)
+                        }
+                    }
+                }
+                .disabled(keyboardSelectionDisabled)
             }
         }
 
@@ -56,6 +67,16 @@ struct MenuView: View {
             Text("Quit")
         }
     }
+
+    private var keyboardSelectionDisabled: Bool {
+        switch viewModel.connectionState {
+        case .connected, .disconnected, .error, .noKeyboardSelected:
+            false
+        default:
+            true
+        }
+    }
+
 }
 
 #Preview {

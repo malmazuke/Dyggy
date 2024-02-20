@@ -1,19 +1,22 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@ ✓" : {
+
+    },
+    "Available Keyboards" : {
+
+    },
     "Dyggy" : {
 
     },
     "Error: %@" : {
 
     },
-    "No Keyboards Detected" : {
-
-    },
     "Quit" : {
 
     },
-    "Select a keyboard below" : {
+    "Select keyboard" : {
 
     },
     "Select main config" : {
@@ -32,9 +35,6 @@
 
     },
     "Status: Disconnecting" : {
-
-    },
-    "Status: No Keyboard Detected" : {
 
     },
     "Timeout" : {

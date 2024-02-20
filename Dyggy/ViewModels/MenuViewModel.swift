@@ -46,7 +46,7 @@ class MenuViewModel {
 
     var connectionState: ConnectionState
     var selectedKeyboard: ConnectedDygmaDevice?
-    var availableKeyboards: [ConnectedDygmaDevice]?
+    var availableKeyboards: [ConnectedDygmaDevice] = []
 
     // MARK: - Private Properties
 

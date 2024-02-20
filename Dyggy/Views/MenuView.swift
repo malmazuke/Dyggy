@@ -15,7 +15,7 @@ struct MenuView: View {
     var body: some View {
         switch viewModel.connectionState {
         case .noKeyboardConnected:
-            EmptyView()
+            Text("No keyboard detected")
         case .noKeyboardSelected:
             Text("Select keyboard")
         case .disconnected:
@@ -34,11 +34,11 @@ struct MenuView: View {
             }
         }
 
-        if let available = viewModel.availableKeyboards {
+        if viewModel.availableKeyboards.count > 0 {
             Divider()
 
             Menu("Available Keyboards") {
-                ForEach(available, id: \.deviceType) { device in
+                ForEach(viewModel.availableKeyboards, id: \.deviceType) { device in
                     if let selected = viewModel.selectedKeyboard, selected == device {
                         Button("\(device.deviceName) ✓") {
                             // Deliberately left blank

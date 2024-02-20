@@ -9,9 +9,9 @@
 
 class MockUSBService: USBService {
 
-    var discoverConnectedDevicesHandler: (() -> [(vendorId: Int, productId: Int)])!
+    var discoverConnectedDevicesHandler: (() -> [USBDevice])!
 
-    func discoverConnectedDevices() -> [(vendorId: Int, productId: Int)] {
+    func discoverConnectedDevices() -> [USBDevice] {
         discoverConnectedDevicesHandler()
     }
 

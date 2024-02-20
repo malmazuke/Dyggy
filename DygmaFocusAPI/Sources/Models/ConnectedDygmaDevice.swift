@@ -8,7 +8,22 @@
 public struct ConnectedDygmaDevice: Hashable {
 
     // TODO: Add relevant information, ports, etc
-    var vendorId: Int
-    var productId: Int
+    public var deviceType: DygmaDevice
+
+    public var deviceName: String {
+        deviceType.displayName
+    }
+
+}
+
+extension ConnectedDygmaDevice {
+
+    init?(vendorId: Int, productId: Int) {
+        guard let deviceType = DygmaDevice.device(vendorId: vendorId, productId: productId) else {
+            return nil
+        }
+
+        self.deviceType = deviceType
+    }
 
 }

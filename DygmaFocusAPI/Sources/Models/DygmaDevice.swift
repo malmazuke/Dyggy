@@ -11,6 +11,10 @@ public enum DygmaDevice {
     case raiseANSI
     case raiseISO
 
+}
+
+extension DygmaDevice {
+
     var vendorId: Int {
         switch self {
         case .defyWired:
@@ -39,6 +43,27 @@ public enum DygmaDevice {
 
     public static var allDevices: Set<DygmaDevice> {
         [.defyWired, .defyWireless, .raiseANSI, .raiseISO]
+    }
+
+    static func device(vendorId: Int, productId: Int) -> DygmaDevice? {
+        return allDevices.first { $0.vendorId == vendorId && $0.productId == productId }
+    }
+
+}
+
+extension DygmaDevice {
+
+    var displayName: String {
+        switch self {
+        case .defyWired:
+            String(localized: "Dygma Defy (Wired)")
+        case .defyWireless:
+            String(localized: "Dygma Defy (Wireless)")
+        case .raiseANSI:
+            String(localized: "Dygma Raise (ANSI)")
+        case .raiseISO:
+            String(localized: "Dygma Raise (ISO)")
+        }
     }
 
 }

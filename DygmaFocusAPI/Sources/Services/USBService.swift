@@ -46,7 +46,12 @@ class DefaultUSBService: USBService {
             if let vendorIDNum = vendorIDRef?.takeRetainedValue() as? NSNumber {
                 let vendorID = vendorIDNum.intValue
 
-                let productIDRef = IORegistryEntryCreateCFProperty(device, kUSBProductID as CFString, kCFAllocatorDefault, 0)
+                let productIDRef = IORegistryEntryCreateCFProperty(
+                    device,
+                    kUSBProductID as CFString,
+                    kCFAllocatorDefault,
+                    0
+                )
                 if let productIDNum = productIDRef?.takeRetainedValue() as? NSNumber {
                     let productID = productIDNum.intValue
 

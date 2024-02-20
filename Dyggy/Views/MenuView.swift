@@ -5,12 +5,14 @@
 //  Created by Mark Feaver on 17/2/2024.
 //
 
+import DygmaFocusAPI
 import SFSafeSymbols
 import SwiftUI
 
+@MainActor
 struct MenuView: View {
 
-    private var viewModel = MenuViewModel()
+    @Bindable private var viewModel = MenuViewModel()
 
     var body: some View {
         switch viewModel.connectionState {
@@ -37,20 +39,15 @@ struct MenuView: View {
         Divider()
 
         if viewModel.availableKeyboards.count > 0 {
-            Menu("Available Keyboards") {
+            Picker("Available Keyboards", selection: $viewModel.selectedKeyboard) {
                 ForEach(viewModel.availableKeyboards, id: \.deviceType) { device in
-                    if let selected = viewModel.selectedKeyboard, selected == device {
-                        Button("\(device.deviceName) ✓") {
-                            // Deliberately left blank
-                        }
-                    } else {
-                        Button(device.deviceName) {
-                            viewModel.connectToKeyboard(device)
-                        }
+                    Button(device.deviceName) {
+                        viewModel.connectToKeyboard(device)
                     }
+                    .tag(device as ConnectedDygmaDevice?)
                 }
-                .disabled(keyboardSelectionDisabled)
             }
+            .disabled(keyboardSelectionDisabled)
         }
 
         Button(action: viewModel.selectPrimaryConfig) {

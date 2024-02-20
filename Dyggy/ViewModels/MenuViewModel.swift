@@ -14,6 +14,7 @@ import OSLog
 import Factory
 
 @Observable
+@MainActor
 class MenuViewModel {
 
     // MARK: - Types
@@ -81,6 +82,14 @@ class MenuViewModel {
 
     }
 
+    private func updateConnectionStatus(with keyboardConnectionStatus: KeyboardConnectionStatus) {
+        connectionState = .state(with: keyboardConnectionStatus)
+    }
+
+    private func updateConnectionStatus(with connectionError: KeyboardConnectionError) {
+        connectionState = .error(description: connectionError.errorDescription ?? String(localized: "Unknown"))
+    }
+
 }
 
 // MARK: - Actions
@@ -104,11 +113,15 @@ extension MenuViewModel {
                 let connectionStatus = try await keyboardService.connect(to: selectedKeyboard)
                 Logger.viewCycle.debug("Connection status: \(String(describing: connectionStatus))")
 
-                connectionState = .state(with: connectionStatus)
+                await MainActor.run {
+                    updateConnectionStatus(with: connectionStatus)
+                }
             } catch let error as KeyboardConnectionError {
                 Logger.viewCycle.error("\(error)")
 
-                connectionState = .error(description: error.errorDescription ?? String(localized: "Unknown"))
+                await MainActor.run {
+                    updateConnectionStatus(with: error)
+                }
             }
         }
     }

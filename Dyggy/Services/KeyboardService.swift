@@ -34,9 +34,6 @@ class DefaultKeyboardService: KeyboardService {
 
         Logger.viewCycle.debug("KeyboardService: Connecting to \(keyboard.deviceName)")
 
-        let connectedDevices = focusAPI.find(devices: DygmaDevice.allDevices)
-        Logger.viewCycle.debug("Connected devices: \(connectedDevices.map { $0.deviceName })")
-
         try await Task.sleep(nanoseconds: 2 * 1_000_000_000)
 
         let isConnected = Bool.random()

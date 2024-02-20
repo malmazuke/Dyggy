@@ -53,6 +53,7 @@
 		9B2DF5092B803CBA000F8A18 /* DyggyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DyggyUITests.swift; sourceTree = "<group>"; };
 		9B2DF50B2B803CBA000F8A18 /* DyggyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DyggyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9B451B582B831463004A6926 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		9B71C7B72B83511600A32991 /* Focus-API-MacOS */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "Focus-API-MacOS"; sourceTree = "<group>"; };
 		9B9EEA1D2B80B8BE00C30A9A /* Logger+Subsystems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+Subsystems.swift"; sourceTree = "<group>"; };
 		9B9EEA1F2B80B9C000C30A9A /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		9B9EEA212B80B9F800C30A9A /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -91,6 +92,7 @@
 		9B2DF4DF2B803CB9000F8A18 = {
 			isa = PBXGroup;
 			children = (
+				9B71C7B72B83511600A32991 /* Focus-API-MacOS */,
 				9B2DF4EA2B803CB9000F8A18 /* Dyggy */,
 				9B2DF4FE2B803CBA000F8A18 /* DyggyTests */,
 				9B2DF5082B803CBA000F8A18 /* DyggyUITests */,
@@ -119,8 +121,8 @@
 				9BE038842B80C67600507C64 /* Views */,
 				9B2DF4F12B803CBA000F8A18 /* Assets.xcassets */,
 				9B2DF4F62B803CBA000F8A18 /* Dyggy.entitlements */,
-				9B2DF4F32B803CBA000F8A18 /* Preview Content */,
 				9B451B582B831463004A6926 /* Localizable.xcstrings */,
+				9B2DF4F32B803CBA000F8A18 /* Preview Content */,
 			);
 			path = Dyggy;
 			sourceTree = "<group>";
@@ -177,8 +179,8 @@
 		9BE038872B80C6AC00507C64 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				9B9EEA1D2B80B8BE00C30A9A /* Logger+Subsystems.swift */,
 				9BE038802B80C61500507C64 /* DependencyInjection.swift */,
+				9B9EEA1D2B80B8BE00C30A9A /* Logger+Subsystems.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";

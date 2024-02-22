@@ -5,8 +5,9 @@
 //  Created by Mark Feaver on 20/2/2024.
 //
 
-import Foundation
+import Factory
 import IOKit.usb
+import ORSSerial
 
 protocol DeviceService {
 
@@ -14,60 +15,71 @@ protocol DeviceService {
 
 }
 
+struct DeviceAttributes {
+
+    let vendorId: Int
+    let productId: Int
+
+}
+
 class DefaultDeviceService: DeviceService {
 
+    // MARK: - Private Properties
+    @ObservationIgnored
+    @Injected(\.serialPortManager) private var serialPortManager
+
+    // MARK: - DeviceService
     func discoverConnectedDevices() -> [SerialDevice] {
-        var results: [SerialDevice] = []
+        var devices: [SerialDevice] = []
 
-        // Set up a matching dictionary for the IOService matching
-        let matchingDict = IOServiceMatching(kIOUSBDeviceClassName) as NSMutableDictionary
+        let availablePorts = serialPortManager.availablePorts
+        for port in availablePorts {
+            guard let attributes = port.getVendorAndProductId() else {
+                continue
+            }
 
-        // Get a main port for communication with I/O Kit
-        let mainPort: mach_port_t = kIOMainPortDefault
-
-        // Create an iterator for all USB devices
-        var iterator: io_iterator_t = 0
-        let kernResult = IOServiceGetMatchingServices(mainPort, matchingDict, &iterator)
-
-        guard kernResult == KERN_SUCCESS else {
-            // TODO: Throw actual useful errors
-            print("Error: Could not create an iterator for matching services (\(kernResult))")
-            return results
+            devices.append(.init(vendorId: attributes.vendorId, productId: attributes.productId, path: port.path))
         }
 
-        // Iterate over all found devices
-        while true {
-            let device: io_service_t = IOIteratorNext(iterator)
+        return devices
+    }
+
+}
+
+private extension ORSSerialPort {
+
+    func getVendorAndProductId() -> DeviceAttributes? {
+        var result: DeviceAttributes?
+
+        var iterator: io_iterator_t = 0
+        guard IORegistryEntryCreateIterator(self.ioKitDevice,
+                                            kIOServicePlane,
+                                            IOOptionBits(kIORegistryIterateRecursively + kIORegistryIterateParents),
+                                            &iterator) == KERN_SUCCESS else { return nil }
+
+        while result == nil {
+            let device = IOIteratorNext(iterator)
+
             if device == 0 {
                 break
             }
 
-            // Retrieve the device's vendor ID
-            let vendorIDRef = IORegistryEntryCreateCFProperty(device, kUSBVendorID as CFString, kCFAllocatorDefault, 0)
-            if let vendorIDNum = vendorIDRef?.takeRetainedValue() as? NSNumber {
-                let vendorID = vendorIDNum.intValue
-
-                let productIDRef = IORegistryEntryCreateCFProperty(
-                    device,
-                    kUSBProductID as CFString,
-                    kCFAllocatorDefault,
-                    0
-                )
-                if let productIDNum = productIDRef?.takeRetainedValue() as? NSNumber {
-                    let productID = productIDNum.intValue
-
-                    results.append(.init(vendorId: vendorID, productId: productID))
-                }
+            var usbProperties: Unmanaged<CFMutableDictionary>?
+            guard IORegistryEntryCreateCFProperties(device, &usbProperties, kCFAllocatorDefault, 0) == KERN_SUCCESS,
+                  let properties = usbProperties?.takeRetainedValue() as? [String: Any] else {
+                IOObjectRelease(device)
+                continue
             }
 
-            // Release the device object
+            if let vendorID = properties[kUSBVendorID as String] as? Int,
+               let productID = properties[kUSBProductID as String] as? Int {
+                result = .init(vendorId: vendorID, productId: productID)
+            }
+
             IOObjectRelease(device)
         }
 
-        // Release the iterator
         IOObjectRelease(iterator)
-
-        return results
+        return result
     }
-
 }

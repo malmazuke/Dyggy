@@ -8,4 +8,5 @@
 struct SerialDevice {
     let vendorId: Int
     let productId: Int
+    let path: String
 }

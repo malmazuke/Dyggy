@@ -25,13 +25,13 @@ class DefaultKeyboardService: KeyboardService {
     @Injected(\.focusAPI) private var focusAPI
 
     func discoverKeyboards() -> [ConnectedDygmaDevice] {
-        Array(focusAPI.find(devices: DygmaDevice.allDevices)).sorted()
+        focusAPI.find(devices: DygmaDevice.allDevices).sorted()
     }
 
     func connect(to keyboard: ConnectedDygmaDevice) async throws -> KeyboardConnectionStatus {
         // TODO: Add implementation
 
-        Logger.viewCycle.debug("KeyboardService: Connecting to \(keyboard.deviceName)")
+        Logger.viewCycle.debug("KeyboardService: Connecting to \(keyboard.deviceName) at path \(keyboard.path)")
 
         try await Task.sleep(nanoseconds: 2 * 1_000_000_000)
 

@@ -6,11 +6,16 @@
 //
 
 import Factory
+import ORSSerial
 
 extension Container {
 
     var deviceService: Factory<DeviceService> {
         self { DefaultDeviceService() }
+    }
+
+    var serialPortManager: Factory<ORSSerialPortManager> {
+        self { ORSSerialPortManager.shared() }
     }
 
 }

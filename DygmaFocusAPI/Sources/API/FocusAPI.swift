@@ -3,7 +3,7 @@ import Observation
 
 public protocol FocusAPI {
 
-    func find(devices: Set<DygmaDevice>) -> Set<ConnectedDygmaDevice>
+    func find(devices: Set<DygmaDevice>) -> [ConnectedDygmaDevice]
 
 }
 
@@ -21,16 +21,20 @@ public class DefaultFocusAPI: FocusAPI {
 
     // MARK: - Public methods
 
-    public func find(devices: Set<DygmaDevice>) -> Set<ConnectedDygmaDevice> {
+    public func find(devices: Set<DygmaDevice>) -> [ConnectedDygmaDevice] {
         let allDevices = deviceService.discoverConnectedDevices()
 
-        let foundDevices = allDevices.filter { deviceInfo in
-            devices.contains { device in
-                device.vendorId == deviceInfo.vendorId && device.productId == deviceInfo.productId
+        let connectedDevices: [ConnectedDygmaDevice] = allDevices.compactMap { serialDevice in
+            guard let dygmaDevice = DygmaDevice.device(
+                vendorId: serialDevice.vendorId,
+                productId: serialDevice.productId
+            ) else {
+                return nil
             }
+            return ConnectedDygmaDevice(deviceType: dygmaDevice, path: serialDevice.path)
         }
 
-        return Set(foundDevices.compactMap { ConnectedDygmaDevice(vendorId: $0.vendorId, productId: $0.productId) })
+        return connectedDevices
     }
 
 }

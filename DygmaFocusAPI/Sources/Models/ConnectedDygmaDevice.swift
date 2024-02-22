@@ -7,15 +7,16 @@
 
 public struct ConnectedDygmaDevice: Hashable {
 
-    // TODO: Add relevant information, ports, etc
     public var deviceType: DygmaDevice
+    public var path: String
 
     public var deviceName: String {
         deviceType.displayName
     }
 
-    public init(deviceType: DygmaDevice) {
+    public init(deviceType: DygmaDevice, path: String) {
         self.deviceType = deviceType
+        self.path = path
     }
 
 }
@@ -24,18 +25,6 @@ extension ConnectedDygmaDevice: Comparable {
 
     public static func < (lhs: ConnectedDygmaDevice, rhs: ConnectedDygmaDevice) -> Bool {
         lhs.deviceType < rhs.deviceType
-    }
-
-}
-
-public extension ConnectedDygmaDevice {
-
-    init?(vendorId: Int, productId: Int) {
-        guard let deviceType = DygmaDevice.device(vendorId: vendorId, productId: productId) else {
-            return nil
-        }
-
-        self.deviceType = deviceType
     }
 
 }

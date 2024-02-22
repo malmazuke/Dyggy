@@ -22,16 +22,18 @@ final class DefaultFocusAPITests: XCTestCase {
     func testFindAllDevices() {
         // GIVEN all devices are connected
         mockDeviceService.discoverConnectedDevicesHandler = {
-            DygmaDevice.allDevices.map { .init(vendorId: $0.vendorId, productId: $0.productId) }
+            DygmaDevice.allDevices.map {
+                .init(vendorId: $0.vendorId, productId: $0.productId, path: "/dev/cu.usbmodem2101")
+            }
         }
 
         // AND I expect to find four connected devices
-        let expectedDevices: Set<ConnectedDygmaDevice> = Set(
-            DygmaDevice.allDevices.compactMap { ConnectedDygmaDevice(vendorId: $0.vendorId, productId: $0.productId) }
-        )
+        let expectedDevices = DygmaDevice.allDevices.compactMap {
+            ConnectedDygmaDevice(deviceType: $0, path: "/dev/cu.usbmodem2101")
+        }.sorted()
 
         // WHEN Focus API attempts to find devices
-        let foundDevices = testSubject.find(devices: DygmaDevice.allDevices)
+        let foundDevices = testSubject.find(devices: DygmaDevice.allDevices).sorted()
 
         // THEN Devices are found
         XCTAssertEqual(expectedDevices, foundDevices)

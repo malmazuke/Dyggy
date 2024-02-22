@@ -9,23 +9,26 @@ let package = Package(
         .macOS(.v14)
     ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "DygmaFocusAPI",
-            targets: ["DygmaFocusAPI"])
+            targets: ["DygmaFocusAPI"]
+        )
     ],
     dependencies: [
-        .package(url: "https://github.com/hmlongco/Factory", from: "2.3.1")
+        .package(url: "https://github.com/armadsen/ORSSerialPort.git", from: "2.1.0"),
+        .package(url: "https://github.com/hmlongco/Factory.git", from: "2.3.1")
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "DygmaFocusAPI",
-            dependencies: ["Factory"]
+            dependencies: [
+                .product(name: "Factory", package: "factory"),
+                .product(name: "ORSSerial", package: "orsserialport")
+            ]
         ),
         .testTarget(
             name: "DygmaFocusAPITests",
-            dependencies: ["DygmaFocusAPI"])
+            dependencies: ["DygmaFocusAPI"]
+        )
     ]
 )

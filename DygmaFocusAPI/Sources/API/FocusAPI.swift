@@ -11,7 +11,7 @@ public class DefaultFocusAPI: FocusAPI {
 
     // MARK: - Private Properties
     @ObservationIgnored
-    @Injected(\.usbService) private var usbService
+    @Injected(\.deviceService) private var deviceService
 
     // MARK: - Initialisers
 
@@ -22,7 +22,7 @@ public class DefaultFocusAPI: FocusAPI {
     // MARK: - Public methods
 
     public func find(devices: Set<DygmaDevice>) -> Set<ConnectedDygmaDevice> {
-        let allDevices = usbService.discoverConnectedDevices()
+        let allDevices = deviceService.discoverConnectedDevices()
 
         let foundDevices = allDevices.filter { deviceInfo in
             devices.contains { device in

@@ -5,15 +5,15 @@ import XCTest
 final class DefaultFocusAPITests: XCTestCase {
 
     var testSubject: DefaultFocusAPI!
-    var mockUSBService: MockUSBService!
+    var mockDeviceService: MockDeviceService!
 
     override func setUp() {
         super.setUp()
 
-        mockUSBService = MockUSBService()
+        mockDeviceService = MockDeviceService()
 
-        Container.shared.usbService.register { [unowned self] in
-            mockUSBService
+        Container.shared.deviceService.register { [unowned self] in
+            mockDeviceService
         }
 
         testSubject = DefaultFocusAPI()
@@ -21,7 +21,7 @@ final class DefaultFocusAPITests: XCTestCase {
 
     func testFindAllDevices() {
         // GIVEN all devices are connected
-        mockUSBService.discoverConnectedDevicesHandler = {
+        mockDeviceService.discoverConnectedDevicesHandler = {
             DygmaDevice.allDevices.map { .init(vendorId: $0.vendorId, productId: $0.productId) }
         }
 

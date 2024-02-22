@@ -1,5 +1,5 @@
 //
-//  USBService.swift
+//  DeviceService.swift
 //  
 //
 //  Created by Mark Feaver on 20/2/2024.
@@ -8,16 +8,16 @@
 import Foundation
 import IOKit.usb
 
-protocol USBService {
+protocol DeviceService {
 
-    func discoverConnectedDevices() -> [USBDevice]
+    func discoverConnectedDevices() -> [SerialDevice]
 
 }
 
-class DefaultUSBService: USBService {
+class DefaultDeviceService: DeviceService {
 
-    func discoverConnectedDevices() -> [USBDevice] {
-        var results: [USBDevice] = []
+    func discoverConnectedDevices() -> [SerialDevice] {
+        var results: [SerialDevice] = []
 
         // Set up a matching dictionary for the IOService matching
         let matchingDict = IOServiceMatching(kIOUSBDeviceClassName) as NSMutableDictionary
@@ -28,6 +28,7 @@ class DefaultUSBService: USBService {
         // Create an iterator for all USB devices
         var iterator: io_iterator_t = 0
         let kernResult = IOServiceGetMatchingServices(mainPort, matchingDict, &iterator)
+
         guard kernResult == KERN_SUCCESS else {
             // TODO: Throw actual useful errors
             print("Error: Could not create an iterator for matching services (\(kernResult))")

@@ -9,8 +9,8 @@ import Factory
 
 extension Container {
 
-    var usbService: Factory<USBService> {
-        self { DefaultUSBService() }
+    var deviceService: Factory<DeviceService> {
+        self { DefaultDeviceService() }
     }
 
 }

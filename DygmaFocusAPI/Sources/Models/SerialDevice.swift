@@ -1,11 +1,11 @@
 //
-//  USBDevice.swift
+//  SerialDevice.swift
 //
 //
 //  Created by Mark Feaver on 20/2/2024.
 //
 
-struct USBDevice {
+struct SerialDevice {
     let vendorId: Int
     let productId: Int
 }

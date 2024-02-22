@@ -16,7 +16,7 @@ struct MenuView: View {
 
     var body: some View {
         @Bindable var viewModel = viewModel
-        
+
         switch viewModel.connectionState {
         case .noKeyboardConnected:
             Text("No keyboard detected")

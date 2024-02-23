@@ -5,6 +5,8 @@ public protocol FocusAPI {
 
     func find(devices: Set<DygmaDevice>) -> [ConnectedDygmaDevice]
 
+    func connect(to device: ConnectedDygmaDevice) async throws
+
 }
 
 public class DefaultFocusAPI: FocusAPI {
@@ -12,6 +14,8 @@ public class DefaultFocusAPI: FocusAPI {
     // MARK: - Private Properties
     @ObservationIgnored
     @Injected(\.deviceService) private var deviceService
+
+    private var connectedDevice: ConnectedDygmaDevice?
 
     // MARK: - Initialisers
 
@@ -31,10 +35,14 @@ public class DefaultFocusAPI: FocusAPI {
             ) else {
                 return nil
             }
-            return ConnectedDygmaDevice(deviceType: dygmaDevice, path: serialDevice.path)
+            return ConnectedDygmaDevice(deviceType: dygmaDevice, port: serialDevice.port)
         }
 
         return connectedDevices
+    }
+
+    public func connect(to device: ConnectedDygmaDevice) async throws {
+
     }
 
 }

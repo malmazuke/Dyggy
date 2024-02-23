@@ -38,7 +38,7 @@ class DefaultDeviceService: DeviceService {
                 continue
             }
 
-            devices.append(.init(vendorId: attributes.vendorId, productId: attributes.productId, path: port.path))
+            devices.append(.init(vendorId: attributes.vendorId, productId: attributes.productId, port: port))
         }
 
         return devices

@@ -1,4 +1,5 @@
 import Factory
+import ORSSerial
 import XCTest
 @testable import DygmaFocusAPI
 
@@ -6,11 +7,13 @@ final class DefaultFocusAPITests: XCTestCase {
 
     var testSubject: DefaultFocusAPI!
     var mockDeviceService: MockDeviceService!
+    var mockPort: MockSerialPort!
 
     override func setUp() {
         super.setUp()
 
         mockDeviceService = MockDeviceService()
+        mockPort = MockSerialPort()
 
         Container.shared.deviceService.register { [unowned self] in
             mockDeviceService
@@ -22,14 +25,18 @@ final class DefaultFocusAPITests: XCTestCase {
     func testFindAllDevices() {
         // GIVEN all devices are connected
         mockDeviceService.discoverConnectedDevicesHandler = {
-            DygmaDevice.allDevices.map {
-                .init(vendorId: $0.vendorId, productId: $0.productId, path: "/dev/cu.usbmodem2101")
+            DygmaDevice.allDevices.map { [unowned self] in
+                .init(
+                    vendorId: $0.vendorId,
+                    productId: $0.productId,
+                    port: self.mockPort
+                )
             }
         }
 
         // AND I expect to find four connected devices
         let expectedDevices = DygmaDevice.allDevices.compactMap {
-            ConnectedDygmaDevice(deviceType: $0, path: "/dev/cu.usbmodem2101")
+            ConnectedDygmaDevice(deviceType: $0, port: mockPort)
         }.sorted()
 
         // WHEN Focus API attempts to find devices

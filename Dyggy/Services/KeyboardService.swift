@@ -29,19 +29,11 @@ class DefaultKeyboardService: KeyboardService {
     }
 
     func connect(to keyboard: ConnectedDygmaDevice) async throws -> KeyboardConnectionStatus {
-        // TODO: Add implementation
-
-        Logger.viewCycle.debug("KeyboardService: Connecting to \(keyboard.deviceName) at path \(keyboard.path)")
-
-        try await Task.sleep(nanoseconds: 2 * 1_000_000_000)
-
-        let isConnected = Bool.random()
-
-        if isConnected {
-            Logger.viewCycle.debug("KeyboardService: Connected to \(keyboard.deviceName)")
-
+        do {
+            Logger.viewCycle.debug("KeyboardService: Connecting to \(keyboard.deviceName) at path \(keyboard.path)")
+            try await focusAPI.connect(to: keyboard)
             return .connected
-        } else {
+        } catch {
             throw Bool.random() ? KeyboardConnectionError.timeout : KeyboardConnectionError.unknown
         }
     }

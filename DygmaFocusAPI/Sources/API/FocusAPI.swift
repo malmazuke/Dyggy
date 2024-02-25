@@ -42,7 +42,7 @@ public class DefaultFocusAPI: FocusAPI {
     }
 
     public func connect(to device: ConnectedDygmaDevice) async throws {
-
+        try await Task.sleep(nanoseconds: 2 * 1_000_000_000)
     }
 
 }

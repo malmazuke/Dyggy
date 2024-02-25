@@ -7,6 +7,8 @@ public protocol FocusAPI {
 
     func connect(to device: ConnectedDygmaDevice) async throws
 
+    func disconnect(from keyboard: ConnectedDygmaDevice) async throws
+
 }
 
 public class DefaultFocusAPI: FocusAPI {
@@ -42,6 +44,10 @@ public class DefaultFocusAPI: FocusAPI {
     }
 
     public func connect(to device: ConnectedDygmaDevice) async throws {
+        try await Task.sleep(nanoseconds: 2 * 1_000_000_000)
+    }
+
+    public func disconnect(from keyboard: ConnectedDygmaDevice) async throws {
         try await Task.sleep(nanoseconds: 2 * 1_000_000_000)
     }
 

@@ -65,7 +65,7 @@ class MenuViewModel {
     // MARK: - Private Properties
 
     @ObservationIgnored
-    @Injected(\.keyboardService) private var keyboardService
+    @Injected(\.focusAPI) private var focusAPI
 
     // MARK: - Initialisers
 
@@ -75,7 +75,7 @@ class MenuViewModel {
     }
 
     private func searchForConnectedKeyboards() {
-        let keyboards = keyboardService.discoverKeyboards()
+        let keyboards = focusAPI.find(devices: DygmaDevice.allDevices)
 
         availableKeyboards = keyboards
 
@@ -115,11 +115,11 @@ extension MenuViewModel {
 
         Task {
             do {
-                let connectionStatus = try await keyboardService.connect(to: selectedKeyboard)
-                Logger.viewCycle.debug("Connection status: \(String(describing: connectionStatus))")
+                try await focusAPI.connect(to: selectedKeyboard)
+                Logger.viewCycle.debug("Connection status: \(String(describing: ConnectionState.connected))")
 
                 await MainActor.run {
-                    updateConnectionStatus(with: connectionStatus)
+                    updateConnectionStatus(with: .connected)
                 }
             } catch let error as KeyboardConnectionError {
                 Logger.viewCycle.error("\(error)")

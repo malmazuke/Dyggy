@@ -10,10 +10,6 @@ import Factory
 
 extension Container {
 
-    var keyboardService: Factory<KeyboardService> {
-        self { DefaultKeyboardService() }
-    }
-
     var focusAPI: Factory<FocusAPI> {
         self { DefaultFocusAPI() }
     }

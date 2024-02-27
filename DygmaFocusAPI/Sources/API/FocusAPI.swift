@@ -1,13 +1,13 @@
 import Factory
 import Observation
 
-public protocol FocusAPI {
+public protocol FocusAPI: Actor {
 
     func find(devices: Set<DygmaDevice>) async -> [ConnectedDygmaDevice]
 
     func connect(to device: ConnectedDygmaDevice) async throws
 
-    func disconnect(from keyboard: ConnectedDygmaDevice) async throws
+    func disconnect() async throws
 
 }
 
@@ -47,8 +47,8 @@ public actor DefaultFocusAPI: FocusAPI {
         try await Task.sleep(nanoseconds: 2 * 1_000_000_000)
     }
 
-    public func disconnect(from keyboard: ConnectedDygmaDevice) async throws {
-        try await Task.sleep(nanoseconds: 2 * 1_000_000_000)
+    public func disconnect() async throws {
+        connectedDevice = nil
     }
 
 }

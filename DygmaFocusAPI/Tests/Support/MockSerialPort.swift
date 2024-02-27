@@ -6,7 +6,7 @@
 //
 
 @testable import DygmaFocusAPI
-import ORSSerial
+@preconcurrency import ORSSerial
 
 struct MockSerialPort: SerialPort {
 
@@ -18,9 +18,9 @@ struct MockSerialPort: SerialPort {
 
     // MARK: - Handlers
 
-    var pathHandler: String = "/dev/tty.usbmodem2101"
-    var openHandler: (() -> Void)!
-    var closeHandler: (() -> Bool)!
+    let pathHandler: String = "/dev/tty.usbmodem2101"
+    var openHandler: (@Sendable () -> Void)!
+    var closeHandler: (@Sendable () -> Bool)!
 
     func open() {
         openHandler()

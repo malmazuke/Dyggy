@@ -15,6 +15,7 @@
 		9B2DF50A2B803CBA000F8A18 /* DyggyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2DF5092B803CBA000F8A18 /* DyggyUITests.swift */; };
 		9B2DF50C2B803CBA000F8A18 /* DyggyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2DF50B2B803CBA000F8A18 /* DyggyUITestsLaunchTests.swift */; };
 		9B451B592B831463004A6926 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9B451B582B831463004A6926 /* Localizable.xcstrings */; };
+		9B6E455B2B8DAB5E008E33E3 /* ORSSerial in Frameworks */ = {isa = PBXBuildFile; productRef = 9B6E455A2B8DAB5E008E33E3 /* ORSSerial */; };
 		9B9EEA1C2B80B17C00C30A9A /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 9B9EEA1B2B80B17C00C30A9A /* SFSafeSymbols */; };
 		9B9EEA1E2B80B8BE00C30A9A /* Logger+Subsystems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9EEA1D2B80B8BE00C30A9A /* Logger+Subsystems.swift */; };
 		9B9EEA202B80B9C000C30A9A /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9EEA1F2B80B9C000C30A9A /* MenuViewModel.swift */; };
@@ -67,6 +68,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B9EEA1C2B80B17C00C30A9A /* SFSafeSymbols in Frameworks */,
+				9B6E455B2B8DAB5E008E33E3 /* ORSSerial in Frameworks */,
 				9B2854A62B84370A006291F2 /* DygmaFocusAPI in Frameworks */,
 				9BE0387F2B80C57700507C64 /* Factory in Frameworks */,
 			);
@@ -205,6 +207,7 @@
 				9B9EEA1B2B80B17C00C30A9A /* SFSafeSymbols */,
 				9BE0387E2B80C57700507C64 /* Factory */,
 				9B2854A52B84370A006291F2 /* DygmaFocusAPI */,
+				9B6E455A2B8DAB5E008E33E3 /* ORSSerial */,
 			);
 			productName = Dyggy;
 			productReference = 9B2DF4E82B803CB9000F8A18 /* Dyggy.app */;
@@ -282,6 +285,7 @@
 				9B9EEA1A2B80B17C00C30A9A /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 				9BE0387D2B80C57700507C64 /* XCRemoteSwiftPackageReference "Factory" */,
 				9B2854A42B84370A006291F2 /* XCLocalSwiftPackageReference "DygmaFocusAPI" */,
+				9B6E45592B8DAB5E008E33E3 /* XCRemoteSwiftPackageReference "ORSSerialPort" */,
 			);
 			productRefGroup = 9B2DF4E92B803CB9000F8A18 /* Products */;
 			projectDirPath = "";
@@ -700,6 +704,14 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		9B6E45592B8DAB5E008E33E3 /* XCRemoteSwiftPackageReference "ORSSerialPort" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/armadsen/ORSSerialPort";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
 		9B9EEA1A2B80B17C00C30A9A /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SFSafeSymbols/SFSafeSymbols";
@@ -722,6 +734,11 @@
 		9B2854A52B84370A006291F2 /* DygmaFocusAPI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DygmaFocusAPI;
+		};
+		9B6E455A2B8DAB5E008E33E3 /* ORSSerial */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9B6E45592B8DAB5E008E33E3 /* XCRemoteSwiftPackageReference "ORSSerialPort" */;
+			productName = ORSSerial;
 		};
 		9B9EEA1B2B80B17C00C30A9A /* SFSafeSymbols */ = {
 			isa = XCSwiftPackageProductDependency;

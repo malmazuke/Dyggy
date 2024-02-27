@@ -9,6 +9,7 @@ import AppKit
 import Combine
 import DygmaFocusAPI
 import Observation
+import ORSSerial
 import OSLog
 
 import Factory
@@ -72,8 +73,23 @@ class MenuViewModel {
     init() {
         self.connectionState = .noKeyboardSelected
         self.searchForConnectedKeyboards()
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(searchForConnectedKeyboards),
+            name: NSNotification.Name.ORSSerialPortsWereConnected,
+            object: nil
+        )
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(searchForConnectedKeyboards),
+            name: NSNotification.Name.ORSSerialPortsWereDisconnected,
+            object: nil
+        )
     }
 
+    @objc
     private func searchForConnectedKeyboards() {
         Task {
             let keyboards = await focusAPI.find(devices: DygmaDevice.allDevices)

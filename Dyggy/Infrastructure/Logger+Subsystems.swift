@@ -8,9 +8,9 @@
 import OSLog
 
 extension Logger {
-    private static var subsystem = Bundle.main.bundleIdentifier!
 
-    static let viewCycle = Logger(subsystem: subsystem, category: "viewcycle")
+    static let viewCycle = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "viewcycle")
 
-    static let statistics = Logger(subsystem: subsystem, category: "statistics")
+    static let statistics = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "statistics")
+
 }

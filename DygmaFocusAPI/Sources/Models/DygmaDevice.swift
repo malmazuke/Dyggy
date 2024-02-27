@@ -5,7 +5,7 @@
 //  Created by Mark Feaver on 20/2/2024.
 //
 
-public enum DygmaDevice {
+public enum DygmaDevice: Sendable {
     case defyWired
     case defyWireless
     case raiseANSI

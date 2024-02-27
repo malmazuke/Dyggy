@@ -3,7 +3,7 @@ import Observation
 
 public protocol FocusAPI {
 
-    func find(devices: Set<DygmaDevice>) -> [ConnectedDygmaDevice]
+    func find(devices: Set<DygmaDevice>) async -> [ConnectedDygmaDevice]
 
     func connect(to device: ConnectedDygmaDevice) async throws
 
@@ -11,7 +11,7 @@ public protocol FocusAPI {
 
 }
 
-public class DefaultFocusAPI: FocusAPI {
+public actor DefaultFocusAPI: FocusAPI {
 
     // MARK: - Private Properties
     @ObservationIgnored
@@ -27,7 +27,7 @@ public class DefaultFocusAPI: FocusAPI {
 
     // MARK: - Public methods
 
-    public func find(devices: Set<DygmaDevice>) -> [ConnectedDygmaDevice] {
+    public func find(devices: Set<DygmaDevice>) async -> [ConnectedDygmaDevice] {
         let allDevices = deviceService.discoverConnectedDevices()
 
         let connectedDevices: [ConnectedDygmaDevice] = allDevices.compactMap { serialDevice in

@@ -22,7 +22,7 @@ final class DefaultFocusAPITests: XCTestCase {
         testSubject = DefaultFocusAPI()
     }
 
-    func testFindAllDevices() {
+    func testFindAllDevices() async {
         // GIVEN all devices are connected
         mockDeviceService.discoverConnectedDevicesHandler = {
             DygmaDevice.allDevices.map { [unowned self] in
@@ -40,7 +40,7 @@ final class DefaultFocusAPITests: XCTestCase {
         }.sorted()
 
         // WHEN Focus API attempts to find devices
-        let foundDevices = testSubject.find(devices: DygmaDevice.allDevices).sorted()
+        let foundDevices = await testSubject.find(devices: DygmaDevice.allDevices).sorted()
 
         // THEN Devices are found
         XCTAssertEqual(expectedDevices, foundDevices)

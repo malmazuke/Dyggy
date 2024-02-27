@@ -75,22 +75,22 @@ class MenuViewModel {
     }
 
     private func searchForConnectedKeyboards() {
-        let keyboards = focusAPI.find(devices: DygmaDevice.allDevices)
+        Task {
+            let keyboards = await focusAPI.find(devices: DygmaDevice.allDevices)
+            availableKeyboards = keyboards
 
-        availableKeyboards = keyboards
-
-        switch keyboards.count {
-        case Int.min...0:
-            connectionState = .noKeyboardConnected
-            selectedKeyboard = nil
-        case 1:
-            let keyboard = keyboards.first!
-            selectedKeyboard = keyboard
-        default:
-            connectionState = .noKeyboardSelected
-            selectedKeyboard = nil
+            switch keyboards.count {
+            case Int.min...0:
+                connectionState = .noKeyboardConnected
+                selectedKeyboard = nil
+            case 1:
+                let keyboard = keyboards.first!
+                selectedKeyboard = keyboard
+            default:
+                connectionState = .noKeyboardSelected
+                selectedKeyboard = nil
+            }
         }
-
     }
 
     private func updateConnectionStatus(with keyboardConnectionStatus: KeyboardConnectionStatus) {

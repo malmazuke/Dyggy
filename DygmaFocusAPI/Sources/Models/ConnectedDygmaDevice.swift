@@ -7,7 +7,7 @@
 
 import ORSSerial
 
-public struct ConnectedDygmaDevice: Hashable {
+public struct ConnectedDygmaDevice: Sendable, Hashable {
 
     // MARK: Public properties
 
@@ -15,7 +15,7 @@ public struct ConnectedDygmaDevice: Hashable {
 
     // MARK: Internal properties
 
-    var port: SerialPort
+    let port: SerialPort
 
     // MARK: Computed properties
 

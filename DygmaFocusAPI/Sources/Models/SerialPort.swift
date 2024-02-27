@@ -7,7 +7,7 @@
 
 import ORSSerial
 
-protocol SerialPort {
+protocol SerialPort: Sendable {
 
     var delegate: ORSSerialPortDelegate? { get set }
     var path: String { get }
@@ -17,4 +17,4 @@ protocol SerialPort {
 
 }
 
-extension ORSSerialPort: SerialPort { }
+extension ORSSerialPort: @unchecked Sendable, SerialPort { }

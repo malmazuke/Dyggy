@@ -15,7 +15,7 @@ public struct ConnectedDygmaDevice: Sendable, Hashable {
 
     // MARK: Internal properties
 
-    let port: SerialPort
+    var port: SerialPort
 
     // MARK: Computed properties
 

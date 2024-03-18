@@ -11,6 +11,7 @@ protocol SerialPort: Sendable {
 
     var delegate: ORSSerialPortDelegate? { get set }
     var path: String { get }
+    var baudRate: NSNumber { get set }
 
     func open()
     func close() -> Bool

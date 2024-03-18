@@ -10,6 +10,8 @@
 
 struct MockSerialPort: SerialPort {
 
+    var baudRate: NSNumber = 115200
+
     var delegate: ORSSerialPortDelegate?
 
     var path: String {

@@ -143,6 +143,10 @@ extension MenuViewModel {
                 await MainActor.run {
                     updateConnectionStatus(with: error)
                 }
+            } catch {
+                await MainActor.run {
+                    updateConnectionStatus(with: .error(.unknown))
+                }
             }
         }
     }

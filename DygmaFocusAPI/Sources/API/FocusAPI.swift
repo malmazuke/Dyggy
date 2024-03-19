@@ -19,6 +19,7 @@ public protocol FocusAPI {
 public class DefaultFocusAPI: NSObject, FocusAPI {
 
     // MARK: - Private Properties
+
     @ObservationIgnored
     @Injected(\.deviceService) private var deviceService
 
@@ -32,7 +33,7 @@ public class DefaultFocusAPI: NSObject, FocusAPI {
         // Intentionally left blank
     }
 
-    // MARK: - Public methods
+    // MARK: - FocusAPI methods
 
     public func find(devices: Set<DygmaDevice>) async -> [ConnectedDygmaDevice] {
         let allDevices = deviceService.discoverConnectedDevices()
@@ -83,6 +84,8 @@ public class DefaultFocusAPI: NSObject, FocusAPI {
     }
 
 }
+
+// MARK: - ORSSerialPortDelegate
 
 extension DefaultFocusAPI: ORSSerialPortDelegate {
 

@@ -6,10 +6,12 @@
 //
 
 public enum DygmaDevice: Sendable {
+
     case defyWired
     case defyWireless
     case raiseANSI
     case raiseISO
+
 }
 
 extension DygmaDevice: Comparable {

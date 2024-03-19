@@ -9,15 +9,15 @@ import ORSSerial
 
 public struct ConnectedDygmaDevice: Sendable, Hashable {
 
-    // MARK: Public properties
+    // MARK: - Public properties
 
     public var deviceType: DygmaDevice
 
-    // MARK: Internal properties
+    // MARK: - Internal properties
 
     var port: SerialPort
 
-    // MARK: Computed properties
+    // MARK: - Computed properties
 
     public var path: String {
         port.path
@@ -26,6 +26,8 @@ public struct ConnectedDygmaDevice: Sendable, Hashable {
     public var deviceName: String {
         deviceType.displayName
     }
+
+    // MARK: - Initialisers
 
     init(deviceType: DygmaDevice, port: SerialPort) {
         self.deviceType = deviceType

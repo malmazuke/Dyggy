@@ -12,6 +12,8 @@ public protocol FocusAPI {
 
     func disconnect() async throws
 
+    func send(command: Command) async throws -> Data
+
 }
 
 public class DefaultFocusAPI: NSObject, FocusAPI {
@@ -22,6 +24,7 @@ public class DefaultFocusAPI: NSObject, FocusAPI {
 
     private var connectedDevice: ConnectedDygmaDevice?
     private var connectionContinuation: CheckedContinuation<Void, Error>?
+    private var commandContinuation: CheckedContinuation<Data, Error>?
 
     // MARK: - Initialisers
 
@@ -62,6 +65,23 @@ public class DefaultFocusAPI: NSObject, FocusAPI {
         connectedDevice = nil
     }
 
+    public func send(command: Command) async throws -> Data {
+        guard let connectedDevice else {
+            throw ConnectionError.noKeyboardDetected
+        }
+
+        return try await withCheckedThrowingContinuation { [unowned self] continuation in
+            commandContinuation = continuation
+
+            do {
+                try connectedDevice.port.send(command: command)
+            } catch {
+                commandContinuation?.resume(throwing: error)
+                commandContinuation = nil
+            }
+        }
+    }
+
 }
 
 extension DefaultFocusAPI: ORSSerialPortDelegate {
@@ -80,6 +100,15 @@ extension DefaultFocusAPI: ORSSerialPortDelegate {
         if let connectionContinuation {
             connectionContinuation.resume(throwing: error)
             self.connectionContinuation = nil
+        } else if let commandContinuation {
+            commandContinuation.resume(throwing: error)
+        }
+    }
+
+    public func serialPort(_ serialPort: ORSSerialPort, didReceive data: Data) {
+        if let commandContinuation {
+            commandContinuation.resume(returning: data)
+            self.commandContinuation = nil
         }
     }
 

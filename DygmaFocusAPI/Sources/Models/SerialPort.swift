@@ -16,6 +16,22 @@ protocol SerialPort: Sendable {
     func open()
     func close() -> Bool
 
+    func send(command: Command) throws
+
 }
 
-extension ORSSerialPort: @unchecked Sendable, SerialPort { }
+public enum SerialPortError: Error {
+    case invalidData
+}
+
+extension ORSSerialPort: @unchecked Sendable, SerialPort {
+
+    func send(command: Command) throws {
+        guard let data = command.rawValue.data(using: .utf8) else {
+            throw SerialPortError.invalidData
+        }
+
+        self.send(data)
+    }
+
+}

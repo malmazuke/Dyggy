@@ -152,7 +152,14 @@ extension MenuViewModel {
     }
 
     func selectPrimaryConfig() {
-        Logger.viewCycle.debug("Select Primary Config selected")
+        Task {
+            do {
+                let result = try await focusAPI.send(command: .help)
+                Logger.viewCycle.debug("Received command result: \(result)")
+            } catch {
+                Logger.viewCycle.error("Error sending command: \(error)")
+            }
+        }
     }
 
     func settingsSelected() {

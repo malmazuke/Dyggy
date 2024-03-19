@@ -57,11 +57,12 @@ public actor DefaultFocusAPI: NSObject, FocusAPI {
             connectedDevice!.port.baudRate = 115200
             connectionContinuation = continuation
 
-            connectedDevice?.port.open()
+            connectedDevice?.port.openPort()
         }
     }
 
     public func disconnect() async throws {
+        try connectedDevice?.port.closePort()
         connectedDevice = nil
     }
 

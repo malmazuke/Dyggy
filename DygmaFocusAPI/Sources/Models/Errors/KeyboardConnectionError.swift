@@ -9,6 +9,7 @@ public enum KeyboardConnectionError: Error {
 
     case unknown
     case noKeyboardDetected
+    case unableToClosePort
     case timeout
 
 }

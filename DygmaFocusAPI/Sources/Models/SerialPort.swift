@@ -13,8 +13,8 @@ protocol SerialPort: Sendable {
     var path: String { get }
     var baudRate: NSNumber { get set }
 
-    func open()
-    func close() -> Bool
+    func openPort()
+    func closePort() throws
 
     func send(command: Command) throws
 
@@ -25,6 +25,16 @@ public enum SerialPortError: Error {
 }
 
 extension ORSSerialPort: @unchecked Sendable, SerialPort {
+
+    func openPort() {
+        self.open()
+    }
+
+    func closePort() throws {
+        guard self.close() != false else {
+            throw KeyboardConnectionError.unableToClosePort
+        }
+    }
 
     func send(command: Command) throws {
         guard let data = command.rawValue.data(using: .utf8) else {

@@ -3,8 +3,7 @@ import Factory
 import Observation
 import ORSSerial
 
-// TODO: Add back in Actor
-public protocol FocusAPI {
+public protocol FocusAPI: Actor {
 
     func find(devices: Set<DygmaDevice>) async -> [ConnectedDygmaDevice]
 
@@ -16,7 +15,7 @@ public protocol FocusAPI {
 
 }
 
-public class DefaultFocusAPI: NSObject, FocusAPI {
+public actor DefaultFocusAPI: NSObject, FocusAPI {
 
     // MARK: - Private Properties
 
@@ -68,7 +67,7 @@ public class DefaultFocusAPI: NSObject, FocusAPI {
 
     public func send(command: Command) async throws -> Data {
         guard let connectedDevice else {
-            throw ConnectionError.noKeyboardDetected
+            throw KeyboardConnectionError.noKeyboardDetected
         }
 
         return try await withCheckedThrowingContinuation { [unowned self] continuation in
@@ -89,17 +88,40 @@ public class DefaultFocusAPI: NSObject, FocusAPI {
 
 extension DefaultFocusAPI: ORSSerialPortDelegate {
 
-    public func serialPortWasRemovedFromSystem(_ serialPort: ORSSerialPort) {
-        connectedDevice = nil
+    nonisolated public func serialPortWasRemovedFromSystem(_ serialPort: ORSSerialPort) {
+        Task {
+            await serialPortWasRemoved()
+        }
     }
 
-    public func serialPortWasOpened(_ serialPort: ORSSerialPort) {
+    nonisolated public func serialPortWasOpened(_ serialPort: ORSSerialPort) {
+        Task {
+            await serialPortWasOpened()
+        }
+    }
+
+    nonisolated public func serialPort(_ serialPort: ORSSerialPort, didEncounterError error: Error) {
+        Task {
+            await serialPortDidEncounterError(error)
+        }
+    }
+
+    nonisolated public func serialPort(_ serialPort: ORSSerialPort, didReceive data: Data) {
+        Task {
+            await serialPortReceivedData(data)
+        }
+    }
+
+    private func serialPortWasOpened() {
         connectionContinuation?.resume()
         connectionContinuation = nil
     }
 
-    public func serialPort(_ serialPort: ORSSerialPort, didEncounterError error: Error) {
-        // If we're currently trying to connect
+    private func serialPortWasRemoved() {
+        self.connectedDevice = nil
+    }
+
+    private func serialPortDidEncounterError(_ error: Error) {
         if let connectionContinuation {
             connectionContinuation.resume(throwing: error)
             self.connectionContinuation = nil
@@ -108,7 +130,7 @@ extension DefaultFocusAPI: ORSSerialPortDelegate {
         }
     }
 
-    public func serialPort(_ serialPort: ORSSerialPort, didReceive data: Data) {
+    private func serialPortReceivedData(_ data: Data) {
         if let commandContinuation {
             commandContinuation.resume(returning: data)
             self.commandContinuation = nil

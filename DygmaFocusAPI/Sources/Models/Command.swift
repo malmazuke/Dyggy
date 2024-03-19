@@ -7,6 +7,6 @@
 
 import Foundation
 
-public enum Command: String {
+public enum Command: String, Sendable {
     case help
 }

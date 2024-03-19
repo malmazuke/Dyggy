@@ -23,7 +23,7 @@ extension KeyboardConnectionError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .noKeyboardDetected:
-            String(localized: "No Keyboard Detected")
+            String(localized: "No keyboard douetected")
         case .timeout:
             String(localized: "Timeout")
         case .unknown:

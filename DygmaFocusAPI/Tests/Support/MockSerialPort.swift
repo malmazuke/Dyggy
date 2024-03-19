@@ -22,14 +22,19 @@ struct MockSerialPort: SerialPort {
 
     let pathHandler: String = "/dev/tty.usbmodem2101"
     var openHandler: (@Sendable () -> Void)!
-    var closeHandler: (@Sendable () -> Bool)!
+    var closeHandler: (@Sendable () -> Void)!
+    var sendCommandHandler: (@Sendable (Command) -> Void)!
 
-    func open() {
+    func openPort() {
         openHandler()
     }
 
-    func close() -> Bool {
+    func closePort() throws {
         closeHandler()
+    }
+
+    func send(command: DygmaFocusAPI.Command) throws {
+        sendCommandHandler(command)
     }
 
 }

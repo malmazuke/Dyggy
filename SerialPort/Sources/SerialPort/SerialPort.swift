@@ -7,6 +7,4 @@
 
 public protocol SerialPort {
 
-    
-
 }

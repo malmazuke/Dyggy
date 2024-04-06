@@ -5,6 +5,8 @@
 //  Created by Mark Feaver on 6/4/2024.
 //
 
+import Foundation
+
 public struct SerialPortConfiguration {
 
     public let baudRate: BAUDRate
@@ -21,8 +23,8 @@ public struct SerialPortConfiguration {
         stopBits: StopBits = .one,
         parity: Parity = .none,
         flowControl: FlowControl = .none,
-        readTimeOut: TimeInterval = nil,
-        writeTimeOut: TimeInterval = nil
+        readTimeOut: TimeInterval? = nil,
+        writeTimeOut: TimeInterval? = nil
     ) {
         self.baudRate = baudRate
         self.dataBits = dataBits

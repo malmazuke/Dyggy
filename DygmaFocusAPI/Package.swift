@@ -16,14 +16,16 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/armadsen/ORSSerialPort.git", from: "2.1.0"),
-        .package(url: "https://github.com/hmlongco/Factory.git", from: "2.3.1")
+        .package(url: "https://github.com/hmlongco/Factory.git", from: "2.3.1"),
+        .package(path: "../SerialPort")
     ],
     targets: [
         .target(
             name: "DygmaFocusAPI",
             dependencies: [
                 .product(name: "Factory", package: "factory"),
-                .product(name: "ORSSerial", package: "orsserialport")
+                .product(name: "ORSSerial", package: "orsserialport"),
+                .byName(name: "SerialPort")
             ]
         ),
         .testTarget(

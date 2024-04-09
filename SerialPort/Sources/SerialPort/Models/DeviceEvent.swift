@@ -9,5 +9,6 @@ public enum DeviceEvent {
 
     case connected(SerialDeviceInfo)
     case disconnected(SerialDeviceInfo)
+    case error(Error)
 
 }

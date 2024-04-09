@@ -8,7 +8,7 @@
 public struct SerialDeviceInfo {
 
     public let portName: String
-    public let vendorId: String
-    public let productId: String
+    public let vendorId: Int?
+    public let productId: Int?
 
 }
